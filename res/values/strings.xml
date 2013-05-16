@@ -4,5 +4,7 @@
     <string name="app_slogan">Filmmaker\'s best friend</string>
     <string name="button_create_new_project">Create a new Project</string>
     <string name="action_settings">Settings</string>
-    <color name="grey">#0A2229</color>
+    <color name="darkblue">#142933</color>
+    <color name="lightgrey">#D0D4D6</color>
+    <color name="darkgrey">#050F1A</color>
 </resources>
