@@ -1,3 +1,4 @@
+package de.oweissbarth.slate;
 import java.sql.Time;
 
 public class Take{

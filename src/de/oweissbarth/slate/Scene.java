@@ -1,3 +1,4 @@
+package de.oweissbarth.slate;
 public class Scene{
 	private Shot[] shots;
 	private short id;
