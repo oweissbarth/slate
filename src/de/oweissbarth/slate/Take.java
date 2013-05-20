@@ -33,6 +33,17 @@ public class Take{
 	public Media getMedia(){
 		return this.media;
 	}
+	
+	public String getXML(){
+		String xml = "<Take\n"+
+						"\t" + this.duration + "\n"+
+						"\t" + this.usable + "\n" +
+						"\t" + this.comment + "\n" +
+						"\t" + this.media.getId()  + "\n" +
+					"</Take";
+		
+		return xml;
+	}
 }
 
 

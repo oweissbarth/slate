@@ -8,6 +8,7 @@
     
     <string name="newProject">New Project</string>
     <string name="importProject">Import Project</string>
+    <string name="load">Load</string>
 
     <color name="darkblue">#142933</color>
     <color name="lightgrey">#D0D4D6</color>
