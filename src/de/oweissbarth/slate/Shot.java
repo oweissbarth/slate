@@ -25,10 +25,11 @@ public class Shot{
 		
 		public String getXML(){
 			String xml = "<Shot\n" + 
-							"\t" + this.fps + "\n"+
-							"\t" + this.focalLength + "\n"+
-							"\t" + this.camera.getId() + "\n" +
-							"\t" + this.lens.getId() + "\n";
+							"\tfps:" + this.fps + "\n"+
+							"\tfocalLength:" + this.focalLength + "\n"+
+							"\tcamera:" + this.camera.getId() + "\n" +
+							"\tlens:" + this.lens.getId() + ">\n";
+			if(takes != null)
 			for(Take take : takes){
 				xml += take.getXML();
 			}

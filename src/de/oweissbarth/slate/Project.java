@@ -24,11 +24,15 @@ public class Project{
 		return this.scenes;
 	}
 	
+	public Equipment getEquipment(){
+		return this.equipment;
+	}
+	
 	public String getXML(){
 		String xml ="<Project\n" +
-				"\t" + this.name +"\n"+
-				"\t" + this.director + "\n"+
-			">\n";
+				"\tname:" + this.name +"\n"+
+				"\tdirector:" + this.director + ">\n";
+		if(scenes!=null)
 		for(Scene scene : scenes){
 			xml += scene.getXML();
 		}

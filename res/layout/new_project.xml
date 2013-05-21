@@ -34,21 +34,37 @@
             android:gravity="left"
             android:layout_weight="2" />
    </LinearLayout>
-   <EditText
-        android:id="@+id/newProjectName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Project name" >
 
-        <requestFocus />
-    </EditText>
-
-   <Button
-       android:id="@+id/button1"
-       android:layout_width="wrap_content"
+   <LinearLayout
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Button" />
+       android:orientation="vertical" >
+
+       <EditText
+           android:id="@+id/newProjectName"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+           android:ems="10"
+           android:hint="Project name" />
+
+       <EditText
+           android:id="@+id/newProjectDirector"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+           android:ems="10"
+           android:hint="Director">
+
+       </EditText>
+
+       <Button
+           android:id="@+id/NewProjectcreate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Create"
+           android:onClick="newProjectcreate" />
+
+   </LinearLayout>
 
 </LinearLayout>

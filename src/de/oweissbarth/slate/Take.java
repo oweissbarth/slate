@@ -36,10 +36,10 @@ public class Take{
 	
 	public String getXML(){
 		String xml = "<Take\n"+
-						"\t" + this.duration + "\n"+
-						"\t" + this.usable + "\n" +
-						"\t" + this.comment + "\n" +
-						"\t" + this.media.getId()  + "\n" +
+						"\tduration:" + this.duration + "\n"+
+						"\tusable:" + this.usable + "\n" +
+						"\tcomment:" + this.comment + "\n" +
+						"\tmedia:" + this.media.getId()  + ">\n" +
 					"</Take";
 		
 		return xml;

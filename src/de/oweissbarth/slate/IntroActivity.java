@@ -40,8 +40,11 @@ public class IntroActivity extends Activity {
 			Log.d("NewProject", "Error");
 		}
 		
-		Intent intent = new Intent(getApplicationContext(), NewProject.class);
-		startActivity(intent);
+		setContentView(R.layout.new_project);
+	}
+	
+	public void newProjectcreate(){
+		//Project project = new Project(R.id.newProjectName, R.id.newProjectDirector)
 	}
 
 }
