@@ -30,8 +30,8 @@ public class Project{
 	
 	public String getXML(){
 		String xml ="<Project\n" +
-				"\tname:" + this.name +"\n"+
-				"\tdirector:" + this.director + ">\n";
+				"\t&name:" + this.name +"\n"+
+				"\t&director:" + this.director + ">\n";
 		if(scenes!=null)
 		for(Scene scene : scenes){
 			xml += scene.getXML();

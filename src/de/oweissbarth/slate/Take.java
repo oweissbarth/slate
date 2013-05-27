@@ -2,6 +2,7 @@ package de.oweissbarth.slate;
 import java.sql.Time;
 
 public class Take{
+	private int id;
 	private Time duration;
 	private boolean usable;
 	private String comment;
@@ -36,11 +37,12 @@ public class Take{
 	
 	public String getXML(){
 		String xml = "<Take\n"+
-						"\tduration:" + this.duration + "\n"+
-						"\tusable:" + this.usable + "\n" +
-						"\tcomment:" + this.comment + "\n" +
-						"\tmedia:" + this.media.getId()  + ">\n" +
-					"</Take";
+						"\ttakeid:"+this.id +"\n"+
+						"\t&duration:" + this.duration + "\n"+
+						"\t&usable:" + this.usable + "\n" +
+						"\t&comment:" + this.comment + "\n" +
+						"\t&media:" + this.media.getId()  + ">\n" +
+					"</Take>";
 		
 		return xml;
 	}
