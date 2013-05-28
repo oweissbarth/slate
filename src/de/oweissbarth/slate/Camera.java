@@ -6,10 +6,8 @@ public class Camera{
 		private int id;
 		private int[] availableFps;
 
-		public Camera(String name, int[] availableFps, int id){
-			this.name = name;
+		public Camera(int id){
 			this.id = id;
-			this.availableFps = availableFps;
 		}
 	
 		public String toString(){
@@ -31,5 +29,21 @@ public class Camera{
 
 		public int[] getAvailableFps(){
 			return this.availableFps;		
+		}
+		
+		/**************************************************
+		 					SETTER
+		 **************************************************/
+		
+		public void setId(int id){
+			this.id=id;
+		}
+		
+		public void setName(String name){
+			this.name = name;
+		}
+		
+		public void setAvailableFps(int[] availableFps){
+			this.availableFps = availableFps;
 		}
 }

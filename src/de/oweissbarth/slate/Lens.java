@@ -13,21 +13,8 @@ public class Lens{
 		private int maxFocalLength;
 
 
-		public Lens(String name, int[] focalLength, int id){
-			this.name = name;
-			this.id = id;		
-
-			if((focalLength.length) == 2){
-				this.fixed = false;
-				this.focalLength = 0;				
-				this.minFocalLength = focalLength[0];
-				this.maxFocalLength = focalLength[1];
-			}else{
-				this.fixed = true;
-				this.minFocalLength = 0;
-				this.maxFocalLength = 0;
-				this.focalLength = focalLength[0];
-			}	
+		public Lens(int id){
+			this.id = id;
 		}
 
 		/***********************************************
@@ -51,6 +38,35 @@ public class Lens{
 		
 		public String getName(){
 			return this.name;
+		}
+		
+		
+		/****************************************************
+		 						SETTER
+		 ****************************************************/
+		public void setId(int id){
+			this.id = id;
+		}
+		
+		
+		public void setFocalLength(int focalLength){
+			this.focalLength= focalLength;
+		}
+		
+		public void setName(String name){
+			this.name = name;
+		}
+		
+		public void setFixed(boolean fixed){
+			this.fixed = fixed;
+		}
+		
+		public void setMinFocalLength(int minFocalLength){
+			this.minFocalLength = minFocalLength;
+		}
+		
+		public void setMaxFocalLength(int maxFocalLength){
+			this.maxFocalLength=maxFocalLength;
 		}
 
 }

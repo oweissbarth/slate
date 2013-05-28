@@ -24,7 +24,7 @@ final class Token {
 	}
 	
 	
-	private static Token[] partitionDotSlate(String xml){
+	public static Token[] partitionDotSlate(String xml){
 		
 		if(!xml.substring(0, 12).equals("---&slate-ver")){
 			Log.d("File", "Error while Parsing File: Could not identify Header. Exspected '---&slate-ver' but found " + xml.substring(0,12));
@@ -105,6 +105,18 @@ final class Token {
 			return 9;
 		if(identifier.equals("closeEquipment"))
 			return 10;
+		if(identifier.equals("camera"))
+			return 11;
+		if(identifier.equals("lens"))
+			return 12;
+		if(identifier.equals("media"))
+			return 13;
+		if(identifier.equals("closecamera"))
+			return 14;
+		if(identifier.equals("closemedia"))
+			return 15;
+		if(identifier.equals("closelens"))
+			return 16;
 		
 		//PROJECT
 		if(identifier.equals("Projectname"))

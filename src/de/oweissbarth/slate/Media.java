@@ -5,15 +5,12 @@ public class Media{
 	private int storage;
 	private short type; //0 = Tape, 1 = SD-Card, 2 = Compact Flash
 
-	public Media(String name, int storage, short type, int id){
-		this.name = name;
-		this.storage = storage;
+	public Media(int id){
 		this.id = id;
-		this.type = type;
 	}
 
 	/**************************************************
-						Getter
+							GETTER
 	**************************************************/
 
 	public String getName(){
@@ -30,5 +27,25 @@ public class Media{
 
 	public short getType(){
 		return this.type;	
+	}
+	
+	/*****************************************************
+	 						SETTER
+	 *****************************************************/
+	
+	public void setId(int id){
+		this.id = id;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public void setStorage(int storage){
+		this.storage= storage;
+	}
+	
+	public void setType(short type){
+		this.type= type;
 	}
 }

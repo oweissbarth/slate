@@ -1,10 +1,23 @@
 package de.oweissbarth.slate;
+
+import java.util.ArrayList;
+
 public class Scene{
-	private Shot[] shots;
-	private short id;
+	private ArrayList<Shot> shots = new ArrayList<Shot>();
+	private int numberOfShots;
+	private int id;
 	private String name;
 	private String description;
 	private boolean ext;
+	
+	public Scene(int id){
+		this.id = id;
+		this.numberOfShots=0;
+	}
+	
+	/**************************************************** 
+	 						GETTER
+	 ****************************************************/
 	
 	public String getName(){
 		return this.name;
@@ -14,7 +27,7 @@ public class Scene{
 		return this.description;
 	}
 	
-	public short getID(){
+	public int getID(){
 		return this.id;
 	}
 	
@@ -23,7 +36,8 @@ public class Scene{
 	}
 	
 	public Shot[] getShots(){
-		return this.shots;
+		int size = shots.size();
+		return shots.toArray(new Shot[size]);
 	}
 	
 	public String getXML(){
@@ -42,4 +56,34 @@ public class Scene{
 		
 	return xml;
 	}
+	
+	
+	/******************************************************
+	 						SETTER
+	 *****************************************************/
+	
+	public Shot addShot(){
+		numberOfShots++;
+		Shot shot = new Shot(numberOfShots);
+		this.shots.add(shot);
+		return shot;
+	}
+	
+	public void setId(int id){
+		this.id = id;
+	}
+	
+	public void setName(String name){
+		this.name= name;
+	}
+	
+	public void setDescription(String description){
+		this.description= description;
+	}
+	
+	public void setExt(boolean ext){
+		this.ext= ext;
+	}
+
+
 }

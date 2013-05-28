@@ -8,11 +8,8 @@ public class Take{
 	private String comment;
 	private Media media;
 
-	public Take(Time duration, boolean usable, String comment, Media media) {
-		this.duration = duration;
-		this.usable = usable;
-		this.comment = comment;
-		this.media = media;
+	public Take(int id) {
+		this.id = id;
 	}
 
 	/**************************************************
@@ -37,7 +34,7 @@ public class Take{
 	
 	public String getXML(){
 		String xml = "<Take\n"+
-						"\ttakeid:"+this.id +"\n"+
+						"\t&takeid:"+this.id +"\n"+
 						"\t&duration:" + this.duration + "\n"+
 						"\t&usable:" + this.usable + "\n" +
 						"\t&comment:" + this.comment + "\n" +
@@ -45,6 +42,30 @@ public class Take{
 					"</Take>";
 		
 		return xml;
+	}
+	
+	/******************************************************
+	 						SETTER
+	 ******************************************************/
+	
+	public void setId(int id){
+		this.id = id;
+	}
+	
+	public void setDuration(Time duration){
+		this.duration= duration;
+	}
+	
+	public void setUsable(boolean usable){
+		this.usable= usable;
+	}
+	
+	public void setComment(String comment){
+		this.comment = comment;
+	}
+	
+	public void setMedia(Media media){
+		this.media = media;
 	}
 }
 

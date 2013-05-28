@@ -1,4 +1,7 @@
 package de.oweissbarth.slate;
+
+import java.util.ArrayList;
+
 public class Shot{
 		private char id;
 		private Lens lens;
@@ -6,8 +9,18 @@ public class Shot{
 		private int focalLength;
 		private Camera camera;
 
-		private Take[] takes;
+		private ArrayList<Take> takes = new ArrayList<Take>();
+		private int numberOfTakes;
+		
+		public Shot(int idcode){
+			this.id = (char)(idcode + 97);
+			this.numberOfTakes=0;
+		}
 
+		
+		/***************************************************
+		 						GETTER
+		 **************************************************/
 		public int getFps(){
 			return this.fps;
 		}
@@ -24,9 +37,14 @@ public class Shot{
 			return this.lens;
 		}
 		
+		public Take[] getTakes(){
+			int size = takes.size();
+			return takes.toArray(new Take[size]);
+		}
+		
 		public String getXML(){
 			String xml = "<Shot\n" + 
-							"\t6shotid:"+this.id +"\n"+
+							"\t&shotid:"+this.id +"\n"+
 							"\t&fps:" + this.fps + "\n"+
 							"\t&focalLength:" + this.focalLength + "\n"+
 							"\t&camera:" + this.camera.getId() + "\n" +
@@ -38,6 +56,37 @@ public class Shot{
 			xml += "</Shot>";
 			
 		return xml;
+		}
+		
+		
+		/*****************************************************
+		 						SETTER
+		 *****************************************************/
+		public Take addTake(){
+			this.numberOfTakes++;
+			Take take = new Take(this.numberOfTakes);
+			this.takes.add(take);
+			return take;
+		}
+		
+		public void setId(char id){
+			this.id = id;
+		}
+		
+		public void setCamera(Camera camera){
+			this.camera = camera;
+		}
+		
+		public void setLens(Lens lens){
+			this.lens=lens;
+		}
+		
+		public void setFps(int fps){
+			this.fps= fps;
+		}
+		
+		public void setFocalLength(int focalLength){
+			this.focalLength= focalLength;
 		}
 }
 

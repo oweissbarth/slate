@@ -2,7 +2,6 @@ package de.oweissbarth.slate;
 
 import java.util.Arrays;
 
-import android.R.layout;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,14 +18,10 @@ public class IntroActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intro);
 		
-		
 		String[] availableFiles = ProjectFile.listProjects(getApplicationContext());
 		ArrayAdapter<String> adapter = null;
 		if (availableFiles.length!=0){
-			
-			
 			adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, availableFiles);
-			
 		}else{
 			adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new String[]{"No Projects"});
 		}
@@ -36,18 +31,11 @@ public class IntroActivity extends Activity {
 	}
 
 	public void newProjectCreationDialog(View view){
-		Project testproject = new Project("erstes", "Oliver");
-		Log.d("File", "TestProject erstellt!");
-		if(ProjectFile.save(testproject, getApplicationContext())){
-			Log.d("NewProject", "Saved");
-		}else{
-			Log.d("NewProject", "Error");
-		}
 		
 		setContentView(R.layout.new_project);
 	}
 	
-	public void newProjectcreate(){
+	public void newProjectcreate(View view){
 		EditText ProjectDirectorField = (EditText) findViewById(R.id.newProjectDirector);
 		EditText ProjectNameField = (EditText) findViewById(R.id.newProjectName);
 		
@@ -67,7 +55,9 @@ public class IntroActivity extends Activity {
 			//Error There is already a Project with the same name. Overwrite it?
 		}
 		
-		Project project = new Project( ProjectNameField.getText().toString(), ProjectDirectorField.getText().toString());
+		Project project = new Project();
+		project.setName( ProjectNameField.getText().toString());
+		project.setDirector(ProjectDirectorField.getText().toString());
 		
 		ProjectFile.save(project, getApplicationContext());
 		
