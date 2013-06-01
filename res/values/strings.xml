@@ -16,5 +16,7 @@
     <string name="title_activity_new_project">NewProject</string>
     <string name="title_activity_main">Slate</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_project_tab">ProjectTab</string>
+    <string name="title_activity_equipment_tab">EquipmentTab</string>
 
 </resources>

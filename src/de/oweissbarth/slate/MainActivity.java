@@ -2,13 +2,14 @@ package de.oweissbarth.slate;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import android.app.Activity;
-import android.app.TabActivity;
+import android.support.v4.app.FragmentTabHost;
+import android.view.View;
+import android.widget.TabHost.TabSpec;
 import android.content.Intent;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends FragmentActivity {
+	private Project project;
+	private FragmentTabHost tabHost;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -16,11 +17,23 @@ public class MainActivity extends Activity {
 		Intent intent = getIntent();
 		String ProjectFileName = intent.getExtras().getString("projectName");
 		
-		Project project = ProjectFile.load(ProjectFileName, getApplicationContext());
+		project = ProjectFile.load(ProjectFileName, getApplicationContext());
 		
-		TextView example = (TextView)findViewById(R.id.example);
-		example.setText("Projectname: " + project.getName() + "\nDirector: "+ project.getDirector());
+		tabHost = (FragmentTabHost) findViewById(R.id.tabhost);
+		tabHost.setup(getApplicationContext(), getSupportFragmentManager());
 		
+		
+		TabSpec projectTab = tabHost.newTabSpec("project").setIndicator("Project");
+		TabSpec equipmentTab  = tabHost.newTabSpec("equipment").setIndicator("Equipment");
+		
+		tabHost.addTab(projectTab, ProjectTab.class, null);
+			
+		tabHost.addTab(equipmentTab, EquipmentTab.class, null);
+
+	}
+	
+	public void saveButton(View view){
+		ProjectFile.save(project, getApplicationContext());
 	}
 
 }

@@ -34,6 +34,14 @@
             android:name="de.oweissbarth.slate.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="de.oweissbarth.slate.ProjectTab"
+            android:label="@string/title_activity_project_tab" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EquipmentTab"
+            android:label="@string/title_activity_equipment_tab" >
+        </activity>
     </application>
 
 </manifest>
