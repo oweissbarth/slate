@@ -33,12 +33,12 @@ public class Take{
 	}
 	
 	public String getXML(){
-		String xml = "<Take\n"+
-						"\t&takeid:"+this.id +"\n"+
-						"\t&duration:" + this.duration + "\n"+
-						"\t&usable:" + this.usable + "\n" +
-						"\t&comment:" + this.comment + "\n" +
-						"\t&media:" + this.media.getId()  + ">\n" +
+		String xml = "<Take>\n"+
+						"\t&takeid:"+this.id +"&\n"+
+						"\t&duration:" + this.duration + "&\n"+
+						"\t&usable:" + this.usable + "&\n" +
+						"\t&comment:" + this.comment + "&\n" +
+						"\t&media:" + this.media.getId()  + "&\n" +
 					"</Take>";
 		
 		return xml;

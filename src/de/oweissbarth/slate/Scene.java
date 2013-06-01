@@ -41,11 +41,11 @@ public class Scene{
 	}
 	
 	public String getXML(){
-		String xml = "<Scene\n" + 
-				"\t&id:" + this.id + "\n" +
-				"\t&name:" + this.name +"\n" +						
-				"\t&description:" + this.description + "\n" + 
-				"\t&ext:" + this.ext + ">\n";
+		String xml = "<Scene>\n" + 
+				"\t&id:" + this.id + "&\n" +
+				"\t&name:" + this.name +"&\n" +						
+				"\t&description:" + this.description + "&\n" + 
+				"\t&ext:" + this.ext + "&\n";
 		
 		if(shots != null)
 		for(Shot shot : shots){

@@ -50,7 +50,7 @@ public class NewProject extends Activity {
 		ProjectFile.save(project, getApplicationContext());
 		
 		Intent openMainView = new Intent(this, MainActivity.class);
-		openMainView.putExtra("projectFileName", projectName + ".slate");
+		openMainView.putExtra("projectName", projectName);
 		startActivity(openMainView);
 	}
 

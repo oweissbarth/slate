@@ -24,61 +24,84 @@ final class Token {
 	}
 	
 	
-	public static Token[] partitionDotSlate(String xml){
-		
-		if(!xml.substring(0, 12).equals("---&slate-ver")){
-			Log.d("File", "Error while Parsing File: Could not identify Header. Exspected '---&slate-ver' but found " + xml.substring(0,12));
+	public static Token[] partitionDotSlate(String dotSlate1){
+		//dotSlate = dotSlate.replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "");
+		String dotSlate = dotSlate1.trim();
+		for(int x = 0; x<dotSlate.length(); x++){
+			Log.d("Parsing", x+" :"+dotSlate.charAt(x));
 		}
-		int fileVersion = Integer.parseInt(xml.substring(12, 16));
+		if(!dotSlate.substring(0, 13).equals("---&slate-ver")){
+			Log.d("File", "Error while Parsing File: Could not identify Header. Exspected '---&slate-ver' but found " + dotSlate.substring(0,12));
+		}
+		int fileVersion = Integer.parseInt(dotSlate.substring(13, 17));
 		
-		char[] input = xml.substring(17).replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "").toCharArray();
+		char[] input = dotSlate.substring(21).toCharArray();
 		ArrayList<Token> tokenList = new ArrayList<Token>();
 		
 		String value ="";
 		int id=-1;
+		for(int x = 0; x<input.length; x++){
+			Log.d("Parsing", x+" :"+input[x]);
+		}
+		Log.d("File", "Start calculating ids");
 		
+		boolean newToken = false;
 		for(int i=0; i < input.length; i++){
+			Log.d("Parsing:", i+"/"+input.length +  "-->" + input[i]);
 			switch(input[i]){
-				case '<' : value = "";
+				case '<' : newToken = true;
 							i++;
+							value = "";
 							boolean close=false;
-							if(input[i+1]=='/'){
+							if(input[i]=='/'){
 								close=true;
 								i++;
 							}
-							while((input[i]!='&')){
+							while((input[i]!='>')&&(i<input.length)){
 								value+=input[i];
 								i++;
 							}
-							if(close)
-								id =getTagID("close" + value );
-							else
+							if(close){
+								id =getTagID("close" + value);
+								Log.d("Parsing", "getTag: "+ value + " id ="+ id);
+							}else{
 								id =getTagID(value);
+								Log.d("Parsing", "getTag: "+ value + " id ="+ id);
+							}
 							break;
 							
 				
 							
-				case '&' : value="";
-							String identifier="";
+				case '&' : newToken = true;
 							i++;
-							while(input[i]!=':'){
+							value="";
+							String identifier="";
+							while((input[i]!=':')&&(i<input.length)){
 								identifier+=input[i];
 								i++;
-							}while(input[i]!='&'){
+							}
+							i++;
+							while((input[i]!='&')&&(i<input.length)){
+								
 								value+=input[i];
 								i++;
 							}
 							id= getTagID(identifier);
+							Log.d("Parsing", "getTag: "+ identifier + " id ="+ id+ ", value="+ value);
 							break;
 							
 
-				default : 	while((input[i]!='&') && (input[i]!='<'))
+				default : 	newToken = false;
+							while((input[i]!='&') && (input[i]!='<') &&(i < input.length))
 								i++;
+							i--;break;
 			
-			}tokenList.add(new Token(id, value));	
+			}
+			if(newToken)
+			tokenList.add(new Token(id, value));	
 		}
 		Log.d("File", "Finished partioning File!");
-		return (Token[])tokenList.toArray();
+		return tokenList.toArray(new Token[tokenList.size()]);
 	}
 		
 		
@@ -120,75 +143,75 @@ final class Token {
 		
 		//PROJECT
 		if(identifier.equals("Projectname"))
-			return 0101;
+			return 101;
 		if(identifier.equals("director"))
-			return 0102;
+			return 102;
 			
 		//SCENE	
 		if(identifier.equals("Sceneid"))
-			return 0201;
+			return 201;
 		if(identifier.equals("scenename"))
-			return 0202;
+			return 202;
 		if(identifier.equals("description"))
-			return 0203;
+			return 203;
 		if(identifier.equals("ext"))
-			return 0204;
+			return 204;
 		
 		//SHOT
 		if(identifier.equals("shotid"))
-			return 0301;
+			return 301;
 		if(identifier.equals("lens"))
-			return 0302;
+			return 302;
 		if(identifier.equals("fps"))
-			return 0303;
+			return 303;
 		if(identifier.equals("focalLength"))
-			return 0304;
+			return 304;
 		if(identifier.equals("camera"))
-			return 0305;
+			return 305;
 		
 		//TAKE
 		if(identifier.equals("takeid"))
-			return 0401;
+			return 401;
 		if(identifier.equals("duration"))
-			return 0402;
+			return 402;
 		if(identifier.equals("usable"))
-			return 0403;
+			return 403;
 		if(identifier.equals("comment"))
-			return 0404;
+			return 404;
 		if(identifier.equals("media"))
-			return 0405;
+			return 405;
 		
 		//CAMERA
 		if(identifier.equals("cameraID"))
-			return 0501;
+			return 501;
 		if(identifier.equals("cameraname"))
-			return 0502;
+			return 502;
 		if(identifier.equals("availableFps"))
-			return 0503;
+			return 503;
 		
 		//LENS
 		if(identifier.equals("lensid"))
-			return 0601;
+			return 601;
 		if(identifier.equals("lensname"))
-			return 0602;
+			return 602;
 		if(identifier.equals("fixed"))
-			return 0603;
+			return 603;
 		if(identifier.equals("lensfocalLength"))
-			return 0604;
+			return 604;
 		if(identifier.equals("minFocalLength"))
-			return 0605;
+			return 605;
 		if(identifier.equals("maxFocalLength"))
-			return 0606;
+			return 606;
 		
 		//MEDIA
 		if(identifier.equals("mediaid"))
-			return 0701;
+			return 701;
 		if(identifier.equals("medianame"))
-			return 0702;
+			return 702;
 		if(identifier.equals("storage"))
-			return 0703;
+			return 703;
 		if(identifier.equals("type"))
-			return 0704;
+			return 704;
 		
 		return -1;
 	}
