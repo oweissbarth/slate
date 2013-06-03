@@ -1,4 +1,4 @@
-package de.oweissbarth.slate;
+package de.oweissbarth.slate.data;
 public class Lens{
 		
 		private String name;

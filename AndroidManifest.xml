@@ -42,6 +42,34 @@
             android:name="de.oweissbarth.slate.EquipmentTab"
             android:label="@string/title_activity_equipment_tab" >
         </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EditScene"
+            android:label="@string/title_activity_edit_scene" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EditShot"
+            android:label="@string/title_activity_edit_shot" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EditTake"
+            android:label="@string/title_activity_edit_take" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EditCamera"
+            android:label="@string/title_activity_edit_camera" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EditLens"
+            android:label="@string/title_activity_edit_lens" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.EditMedia"
+            android:label="@string/title_activity_edit_media" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.RunningTake"
+            android:label="@string/title_activity_running_take" >
+        </activity>
     </application>
 
 </manifest>

@@ -2,6 +2,9 @@ package de.oweissbarth.slate;
 
 import java.util.Arrays;
 
+import de.oweissbarth.slate.data.Project;
+import de.oweissbarth.slate.data.ProjectFile;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

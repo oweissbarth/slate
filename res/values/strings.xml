@@ -18,5 +18,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_project_tab">ProjectTab</string>
     <string name="title_activity_equipment_tab">EquipmentTab</string>
+    <string name="title_activity_edit_scene">EditScene</string>
+    <string name="title_activity_edit_shot">EditShot</string>
+    <string name="title_activity_edit_take">EditTake</string>
+    <string name="title_activity_edit_camera">EditCamera</string>
+    <string name="title_activity_edit_lens">EditLens</string>
+    <string name="title_activity_edit_media">EditMedia</string>
+    <string name="interior">interior</string>
+    <string name="exterior">exterior</string>
+    <string name="shot">Shot</string>
+    <string name="title_activity_running_take">RunningTake</string>
 
 </resources>

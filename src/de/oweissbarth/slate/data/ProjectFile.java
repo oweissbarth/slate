@@ -1,4 +1,4 @@
-package de.oweissbarth.slate;
+package de.oweissbarth.slate.data;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Time;
+
 import android.content.Context;
 import android.util.Log;
 

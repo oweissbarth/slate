@@ -1,4 +1,4 @@
-package de.oweissbarth.slate;
+package de.oweissbarth.slate.data;
 public class Media{
 	private String name;
 	private int id;

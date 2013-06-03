@@ -1,4 +1,4 @@
-package de.oweissbarth.slate;
+package de.oweissbarth.slate.data;
 
 import java.util.ArrayList;
 

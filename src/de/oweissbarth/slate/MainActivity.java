@@ -1,5 +1,7 @@
 package de.oweissbarth.slate;
 
+import de.oweissbarth.slate.data.Project;
+import de.oweissbarth.slate.data.ProjectFile;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -8,7 +10,7 @@ import android.widget.TabHost.TabSpec;
 import android.content.Intent;
 
 public class MainActivity extends FragmentActivity {
-	private Project project;
+	static  Project project;
 	private FragmentTabHost tabHost;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +21,9 @@ public class MainActivity extends FragmentActivity {
 		
 		project = ProjectFile.load(ProjectFileName, getApplicationContext());
 		
-		tabHost = (FragmentTabHost) findViewById(R.id.tabhost);
-		tabHost.setup(getApplicationContext(), getSupportFragmentManager());
+		
+		tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+		tabHost.setup(this, getSupportFragmentManager(), R.id.tabFragmentLayout);
 		
 		
 		TabSpec projectTab = tabHost.newTabSpec("project").setIndicator("Project");
