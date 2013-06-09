@@ -35,7 +35,7 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name="de.oweissbarth.slate.ProjectTab"
+            android:name="de.oweissbarth.slate.ListScenes"
             android:label="@string/title_activity_project_tab" >
         </activity>
         <activity

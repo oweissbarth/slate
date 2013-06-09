@@ -48,6 +48,21 @@ public class Project{
 	return xml;
 	}
 	
+	public String[] getSceneList(){
+		String[] scenesList= new String[scenes.size()+1];
+		int i=0;
+		for(Scene scene: scenes){
+			scenesList[i]=scene.toString();
+			i++;
+		}
+		scenesList[i]="Add Scene";
+		return scenesList;
+	}
+	
+	public Scene getSceneById(int id){
+		return scenes.get(id);
+	}
+	
 	/****************************************************
 	 					SETTER
 	 ***************************************************/

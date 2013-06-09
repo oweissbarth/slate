@@ -57,6 +57,10 @@ public class Scene{
 	return xml;
 	}
 	
+	public String toString(){
+		return this.id + "\t" +  this.name;
+	}
+	
 	
 	/******************************************************
 	 						SETTER
