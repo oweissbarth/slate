@@ -185,7 +185,7 @@ public class ProjectFile {
 								state=10;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 10:	if(t[i].getId()==7){
 								state=11;
@@ -194,7 +194,7 @@ public class ProjectFile {
 								state=12;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 11:	if(t[i].getId()==6){
 								state=5;
@@ -203,42 +203,42 @@ public class ProjectFile {
 								state= 6;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 12:	if(t[i].getId()==301){
 								shot.setId((t[i].getValue()).charAt(0));
 								state=13;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 13:	if(t[i].getId()==302){ 
 								shot.setLens(equipment.getLensById(Integer.parseInt(t[i].getValue())));
 								state=14;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 14:	if(t[i].getId()==303){
 								shot.setFps(Integer.parseInt(t[i].getValue()));
 								state=15;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 15:	if(t[i].getId()==304){
 								shot.setFocalLength(Integer.parseInt(t[i].getValue()));
 								state=16;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 16:	if(t[i].getId()==305){ 
 								shot.setCamera(equipment.getCameraById(Integer.parseInt(t[i].getValue())));
 								state=17;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 17:	if(t[i].getId()==8){
 								state=18;
@@ -247,7 +247,7 @@ public class ProjectFile {
 								state=19;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 18:	if(t[i].getId()==7){
 								state=11;
@@ -256,47 +256,47 @@ public class ProjectFile {
 								state=12;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 19:	if(t[i].getId()==401){
 								take.setId(Integer.parseInt(t[i].getValue()));
 								state=20;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				case 20:	if(t[i].getId()==402){
 								take.setDuration(Time.valueOf(t[i].getValue()));
 								state=21;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 21:	if(t[i].getId()==403){
 								take.setUsable(Boolean.parseBoolean(t[i].getValue()));
 								state= 22;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 22:	if(t[i].getId()==404){
 								take.setComment(t[i].getValue());
 								state=23;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 23:	if(t[i].getId()==405){
 								take.setMedia(equipment.getMediaById(Integer.parseInt(t[i].getValue())));
 								state =24;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 24:	if(t[i].getId()==9){
 								state=25;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 25:	if(t[i].getId()==4){
 								take=shot.addTake();
@@ -305,7 +305,7 @@ public class ProjectFile {
 								state=18;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 30:	if(t[i].getId()==12){
 								lens = equipment.addLens();
@@ -320,7 +320,7 @@ public class ProjectFile {
 								state=31;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 31:	if(t[i].getId()==6){
 								state=5;
@@ -329,21 +329,21 @@ public class ProjectFile {
 								state=6;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 32:	if(t[i].getId()==501){
 								camera.setId(Integer.parseInt(t[i].getValue()));
 								state=33;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 33:	if(t[i].getId()==502){
 								camera.setName(t[i].getValue());
 								state=34;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 34:	if(t[i].getId()==503){
 								String[] array = t[i].getValue().split(",");
@@ -355,13 +355,13 @@ public class ProjectFile {
 								state= 35;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 35:	if(t[i].getId()==14){
 								state=36;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 36:	if(t[i].getId()==11){
 								camera = equipment.addCamera();
@@ -376,41 +376,41 @@ public class ProjectFile {
 								state=31;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 37:	if(t[i].getId()==701){
 								media.setId(Integer.parseInt(t[i].getValue()));
 								state=38;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 38:	if(t[i].getId()==702){
 								media.setName(t[i].getValue());
 								state=39;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 39:	if(t[i].getId()==703){
 								media.setStorage(Integer.parseInt(t[i].getValue()));
 								state=40;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 40:	if(t[i].getId()==704){
 								media.setType(Short.parseShort(t[i].getValue()));
 								state=41;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 41:	if(t[i].getId()==15){
 								state=42;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 42:	if(t[i].getId()==11){
 								camera = equipment.addCamera();
@@ -425,55 +425,55 @@ public class ProjectFile {
 								state=31;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 43:	if(t[i].getId()==601){
 								lens.setId(Integer.parseInt(t[i].getValue()));
 								state=44;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 44:	if(t[i].getId()==602){
 								lens.setName(t[i].getValue());
 								state= 45;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 45:	if(t[i].getId()==603){
 								lens.setFixed(Boolean.parseBoolean(t[i].getValue()));
 								state=46;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 46:	if(t[i].getId()==604){
 								lens.setFocalLength(Integer.parseInt(t[i].getValue()));
 								state=47;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 47:	if(t[i].getId()==605){
 								lens.setMinFocalLength(Integer.parseInt(t[i].getValue()));
 								state=48;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 48:	if(t[i].getId()==606){
 								lens.setMaxFocalLength(Integer.parseInt(t[i].getValue()));
 								state=49;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 49:	if(t[i].getId()==16){
 								state=50;
 							}else{
 								valid=false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 				
 				case 50:	if(t[i].getId()==11){
 								camera = equipment.addCamera();
@@ -488,7 +488,7 @@ public class ProjectFile {
 								state=31;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());
-							}
+							}break;
 			}//end of switch
 		}if(!valid){ //End of for
 			Log.d("Parsing", "Error while parsing");

@@ -148,7 +148,7 @@ final class Token {
 			return 102;
 			
 		//SCENE	
-		if(identifier.equals("Sceneid"))
+		if(identifier.equals("sceneid"))
 			return 201;
 		if(identifier.equals("scenename"))
 			return 202;

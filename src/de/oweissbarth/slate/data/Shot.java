@@ -58,6 +58,18 @@ public class Shot{
 		return xml;
 		}
 		
+		public String[] getTakeList(){
+			String[] takeList= new String[takes.size()+1];
+			int i=0;
+			for(Take take: takes){
+				takeList[i]=take.toString();
+				i++;
+			}
+			takeList[i]="Add Take";
+			return takeList;
+		
+		}
+		
 		
 		/*****************************************************
 		 						SETTER

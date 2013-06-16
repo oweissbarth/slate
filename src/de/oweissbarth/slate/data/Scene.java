@@ -40,10 +40,26 @@ public class Scene{
 		return shots.toArray(new Shot[size]);
 	}
 	
+	public String[] getShotList(){
+		String[] shotList= new String[shots.size()+1];
+		int i=0;
+		for(Shot shot: shots){
+			shotList[i]=shot.toString();
+			i++;
+		}
+		shotList[i]="Add Shot";
+		return shotList;
+	
+	}
+	
+	public Shot getShotById(int id){
+		return this.shots.get(id);
+	}
+	
 	public String getXML(){
 		String xml = "<Scene>\n" + 
-				"\t&id:" + this.id + "&\n" +
-				"\t&name:" + this.name +"&\n" +						
+				"\t&sceneid:" + this.id + "&\n" +
+				"\t&scenename:" + this.name +"&\n" +						
 				"\t&description:" + this.description + "&\n" + 
 				"\t&ext:" + this.ext + "&\n";
 		
