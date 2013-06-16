@@ -18,7 +18,7 @@ public class EditScene extends Activity {
 	
 	
 	private void checkIfNew(){
-		Intent i =getIntent();
+		Intent i = getIntent();
 		
 		boolean newObject = i.getExtras().getBoolean("newObject");
 		Log.d("EDITOR", "NewObject?" + newObject);

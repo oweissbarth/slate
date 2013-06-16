@@ -8,6 +8,8 @@
     <string name="newProject">New Project</string>
     <string name="importProject">Import Project</string>
     <string name="load">Load</string>
+    <string name="edit_item">Edit</string>
+    <string name="delete_item">Delete</string>
 
     <color name="darkblue">#142933</color>
     <color name="lightgrey">#D0D4D6</color>
@@ -15,7 +17,6 @@
 
     <string name="title_activity_new_project">NewProject</string>
     <string name="title_activity_main">Slate</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_project_tab">ProjectTab</string>
     <string name="title_activity_equipment_tab">EquipmentTab</string>
     <string name="title_activity_edit_scene">EditScene</string>

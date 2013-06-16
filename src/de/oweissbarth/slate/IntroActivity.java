@@ -10,11 +10,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class IntroActivity extends Activity {
-
+	private int importClicked=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,6 +67,22 @@ public class IntroActivity extends Activity {
 		Intent loadProjectIntoMain = new Intent(this, MainActivity.class);
 		loadProjectIntoMain.putExtra("projectName", projectName);
 		startActivity(loadProjectIntoMain);
+	}
+	
+	public void importProjectButtonEvent(View view){
+		if(this.importClicked==3){
+			Toast notific = Toast.makeText(getApplicationContext(), "Don't you get it? \nThis isn't yet implemented!", Toast.LENGTH_LONG);
+			notific.show();
+			this.importClicked=-1;
+			Button button = (Button)findViewById(R.id.import_project_button);
+			button.setText("Do not Click again!");
+		}else{
+			if(this.importClicked == -1 ){
+				Button button = (Button)findViewById(R.id.import_project_button);
+				button.setVisibility(View.GONE);
+			}
+			this.importClicked++;
+		}
 	}
 	
 	

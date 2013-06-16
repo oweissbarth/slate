@@ -6,9 +6,11 @@ import de.oweissbarth.slate.data.Scene;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.TabHost.TabSpec;
+import android.widget.Toast;
 import android.content.Intent;
 
 public class MainActivity extends FragmentActivity {
@@ -44,6 +46,15 @@ public class MainActivity extends FragmentActivity {
 	
 	public void saveButton(View view){
 		ProjectFile.save(project, getApplicationContext());
+		Toast savedNotification = Toast.makeText(getApplicationContext(), "saved File", Toast.LENGTH_SHORT);
+		savedNotification.show();
+	}
+	
+	public void onBackPressed(){
+		Log.d("Back", "Back from parent Activity");
+		//super.onBackPressed();
+		ListFragment fragment = (ListFragment) getSupportFragmentManager().findFragmentByTag("project");
+		((ListScenes) fragment).onBackPressed();
 	}
 
 }
