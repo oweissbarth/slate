@@ -60,6 +60,21 @@ public class Equipment{
 				return medium;
 		return null;
 	}
+	
+	public String getXML(){
+		String xml= "<Equipment>\n"; 
+					for(Media media: this.media){
+						xml+= media.getXML();
+					}
+					for(Camera camera: this.cameras){
+						xml+= camera.getXML();
+					}
+					for(Lens lens: this.lenses){
+						xml+= lens.getXML();
+					}
+				xml+="</Equipment>";
+		return xml;
+	}
 
 	/*************************************************
 						Setter

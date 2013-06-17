@@ -31,6 +31,14 @@ public class Camera{
 			return this.availableFps;		
 		}
 		
+		public String getXML(){
+			String xml="<Camera>\n"+
+						"\t&cameraid:"+  this.id + "&\n"+
+						"\t&cameraname:" +this.name +"&\n"+
+						"\t&availableFps:" + this.availableFps.toString() + "&\n"+
+						"</Camera>";
+			return xml;
+		}
 		/**************************************************
 		 					SETTER
 		 **************************************************/

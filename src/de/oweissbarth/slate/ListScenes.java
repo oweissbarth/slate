@@ -87,7 +87,15 @@ public class ListScenes extends ListFragment {
 		case R.id.edit_item: 		Log.d("LIST", "Item Clicked");
 									Intent intent = new Intent(getActivity(), editActivity);
 									intent.putExtra("newObject", false);
-									intent.putExtra("Id", listItem);
+									intent.putExtra("level", level);
+									switch(level){
+										case 0:		intent.putExtra("scene", listItem);
+													break;
+										
+										case 1:		intent.putExtra("scene", scene);
+													intent.putExtra("shot", listItem);
+													break;
+									}
 									Log.d("LIST", "id="+listItem+", position="+ listItem);
 									Log.d("LIST", "About to start editor");
 									startActivity(intent);
@@ -115,5 +123,10 @@ public class ListScenes extends ListFragment {
 			level--;
 			listItems();
 		}
+	}
+	
+	public void onResume(){
+		super.onResume();
+		listItems();
 	}
 }

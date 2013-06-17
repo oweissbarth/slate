@@ -40,6 +40,18 @@ public class Lens{
 			return this.name;
 		}
 		
+		public String getXML(){
+			String xml="<Lens>\n"+
+						"\t&lensid:" + this.id +"&\n"+
+						"\t&lensname:" + this.name +"&\n"+
+						"\t&fixed:"+	this.fixed +"&\n"+
+						"\t&focalLength:" + this.focalLength +"&\n"+
+						"\t&minfocalLength:" + this.minFocalLength +"&\n"+
+						"\t&maxfocalLength:" + this.maxFocalLength +"&\n"+
+						"<Lens>";
+			return xml;
+		}
+		
 		
 		/****************************************************
 		 						SETTER

@@ -29,6 +29,15 @@ public class Media{
 		return this.type;	
 	}
 	
+	public String getXML(){
+		String xml="<Media>" + 
+					"\t&mediaid:"+ this.id + "&\n"+
+					"\t&medianame:"+ this.name + "&\n"+
+					"\t&storage:" + this.storage + "&\n"+
+					"\t&type:" + this.type + "&\n";
+		return xml;
+	}
+	
 	/*****************************************************
 	 						SETTER
 	 *****************************************************/

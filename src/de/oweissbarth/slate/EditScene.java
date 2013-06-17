@@ -1,26 +1,33 @@
 package de.oweissbarth.slate;
 
+import de.oweissbarth.slate.data.Scene;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.EditText;
 
 public class EditScene extends Activity {
+	
+	private int scene;
+	private boolean newObject;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_scene);
 		checkIfNew();
+		
+		scene = getIntent().getExtras().getInt("scene");
 	}
 	
 	
 	private void checkIfNew(){
 		Intent i = getIntent();
 		
-		boolean newObject = i.getExtras().getBoolean("newObject");
+		newObject = i.getExtras().getBoolean("newObject");
 		Log.d("EDITOR", "NewObject?" + newObject);
 		int id = i.getExtras().getInt("id");
 		
@@ -41,6 +48,22 @@ public class EditScene extends Activity {
 		super.onResume();
 		Log.d("EDITOR", "On resume");
 		checkIfNew();
+	}
+	
+	public void saveButton(View view){
+		Scene scene;
+		if(newObject){
+			scene = MainActivity.project.addScene();
+		}else{
+			scene = MainActivity.project.getSceneById(this.scene);	
+		}
+		
+		String name = ((EditText)findViewById(R.id.scene_name)).getText().toString();
+		String description= ((EditText)findViewById(R.id.scene_description)).getText().toString();
+		
+		scene.setName(name);
+		scene.setDescription(description);
+		this.finish();
 	}
 
 
