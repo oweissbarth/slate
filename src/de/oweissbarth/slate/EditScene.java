@@ -1,5 +1,6 @@
 package de.oweissbarth.slate;
 
+import de.oweissbarth.slate.data.ProjectFile;
 import de.oweissbarth.slate.data.Scene;
 import android.os.Bundle;
 import android.app.Activity;
@@ -29,13 +30,13 @@ public class EditScene extends Activity {
 		
 		newObject = i.getExtras().getBoolean("newObject");
 		Log.d("EDITOR", "NewObject?" + newObject);
-		int id = i.getExtras().getInt("id");
+		//int id = i.getExtras().getInt("id");
 		
 		
 		if(!newObject){
 			Log.d("EDITOR", "Existing Scene");
-			((EditText) findViewById(R.id.scene_name)).setText((MainActivity.project.getSceneById(id)).getName());
-			((EditText) findViewById(R.id.scene_description)).setText((MainActivity.project.getSceneById(id)).getDescription());
+			((EditText) findViewById(R.id.scene_name)).setText((ProjectFile.project.getSceneById(scene)).getName());
+			((EditText) findViewById(R.id.scene_description)).setText((ProjectFile.project.getSceneById(scene)).getDescription());
 			
 		}else{
 			Log.d("EDITOR", "NewScene");
@@ -53,9 +54,9 @@ public class EditScene extends Activity {
 	public void saveButton(View view){
 		Scene scene;
 		if(newObject){
-			scene = MainActivity.project.addScene();
+			scene = ProjectFile.project.addScene();
 		}else{
-			scene = MainActivity.project.getSceneById(this.scene);	
+			scene = ProjectFile.project.getSceneById(this.scene);	
 		}
 		
 		String name = ((EditText)findViewById(R.id.scene_name)).getText().toString();

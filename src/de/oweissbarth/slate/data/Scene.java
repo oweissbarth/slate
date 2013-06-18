@@ -68,7 +68,7 @@ public class Scene{
 			xml += shot.getXML();
 		}
 		
-		xml +="</Scene>";
+		xml +="</Scene>\n";
 		
 	return xml;
 	}

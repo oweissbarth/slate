@@ -36,7 +36,7 @@ public class Camera{
 						"\t&cameraid:"+  this.id + "&\n"+
 						"\t&cameraname:" +this.name +"&\n"+
 						"\t&availableFps:" + this.availableFps.toString() + "&\n"+
-						"</Camera>";
+						"</Camera>\n";
 			return xml;
 		}
 		/**************************************************

@@ -12,6 +12,7 @@ public class Project{
 
 	public Project(){
 		this.numberOfScenes = 0;
+		this.equipment = new Equipment();
 	}
 	
 	

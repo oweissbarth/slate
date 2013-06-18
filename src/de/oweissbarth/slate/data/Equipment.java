@@ -1,6 +1,8 @@
 package de.oweissbarth.slate.data;
 import java.util.*;
 
+import android.util.Log;
+
 public class Equipment{
 	private ArrayList<Camera> cameras = new ArrayList<Camera>();
 	private int numberOfCameras;
@@ -59,6 +61,43 @@ public class Equipment{
 			if(medium.getId()==id)
 				return medium;
 		return null;
+	}
+	
+	public String[] getCameraList(){
+		Log.d("ListCameras", cameras.toString() );
+		String[] cameraList= new String[cameras.size()+1];
+		int i=0;
+		for(Camera camera: cameras){
+			cameraList[i]=camera.toString();
+			i++;
+		}
+		cameraList[i]="Add Camera";
+		return cameraList;
+	
+	}
+	
+	public String[] getLensList(){
+		String[] lensList= new String[lenses.size()+1];
+		int i=0;
+		for(Lens lens: lenses){
+			lensList[i]=lens.toString();
+			i++;
+		}
+		lensList[i]="Add Lens";
+		return lensList;
+	
+	}
+	
+	public String[] getMediaList(){
+		String[] mediaList= new String[media.size()+1];
+		int i=0;
+		for(Media medium: media){
+			mediaList[i]=medium.toString();
+			i++;
+		}
+		mediaList[i]="Add Camera";
+		return mediaList;
+	
 	}
 	
 	public String getXML(){

@@ -1,9 +1,9 @@
 package de.oweissbarth.slate;
 
-import de.oweissbarth.slate.data.Project;
 import de.oweissbarth.slate.data.ProjectFile;
 import de.oweissbarth.slate.data.Scene;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.ListFragment;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 import android.content.Intent;
 
 public class MainActivity extends FragmentActivity {
-	static  Project project;
 	private FragmentTabHost tabHost;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,9 +22,9 @@ public class MainActivity extends FragmentActivity {
 		Intent intent = getIntent();
 		String ProjectFileName = intent.getExtras().getString("projectName");
 		
-		project = ProjectFile.load(ProjectFileName, getApplicationContext());
+		ProjectFile.project = ProjectFile.load(ProjectFileName, getApplicationContext());
 		
-		Scene testScene = project.addScene();
+		Scene testScene = ProjectFile.project.addScene();
 		testScene.setDescription("Das ist meine erste TestSzene");
 		testScene.setName("DerTest");
 		
@@ -37,7 +36,7 @@ public class MainActivity extends FragmentActivity {
 		TabSpec projectTab = tabHost.newTabSpec("project").setIndicator("Project");
 		TabSpec equipmentTab  = tabHost.newTabSpec("equipment").setIndicator("Equipment");
 		Log.d("TABS", "Before ListScenes");
-		tabHost.addTab(projectTab, ListScenes.class, null);
+		tabHost.addTab(projectTab, ProjectTab.class, null);
 		Log.d("TABS", "After ListScenes");
 			
 		tabHost.addTab(equipmentTab, EquipmentTab.class, null);
@@ -45,7 +44,7 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	public void saveButton(View view){
-		ProjectFile.save(project, getApplicationContext());
+		ProjectFile.save(ProjectFile.project, getApplicationContext());
 		Toast savedNotification = Toast.makeText(getApplicationContext(), "saved File", Toast.LENGTH_SHORT);
 		savedNotification.show();
 	}
@@ -53,8 +52,13 @@ public class MainActivity extends FragmentActivity {
 	public void onBackPressed(){
 		Log.d("Back", "Back from parent Activity");
 		//super.onBackPressed();
-		ListFragment fragment = (ListFragment) getSupportFragmentManager().findFragmentByTag("project");
-		((ListScenes) fragment).onBackPressed();
+		ListFragment fragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.tabFragmentLayout);
+	
+		if(fragment instanceof EquipmentTab)
+			((EquipmentTab)fragment).onBackPressed();
+		else
+			((ProjectTab)fragment).onBackPressed();
 	}
+
 
 }

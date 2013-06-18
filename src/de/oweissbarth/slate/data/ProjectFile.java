@@ -497,6 +497,9 @@ public class ProjectFile {
 		return project;
 	}//End of Method
 
+
+	public static  Project project;
+
 		
 		
 		
