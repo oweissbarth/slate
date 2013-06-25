@@ -95,7 +95,7 @@ public class Equipment{
 			mediaList[i]=medium.toString();
 			i++;
 		}
-		mediaList[i]="Add Camera";
+		mediaList[i]="Add Media";
 		return mediaList;
 	
 	}

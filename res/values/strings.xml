@@ -29,5 +29,31 @@
     <string name="exterior">exterior</string>
     <string name="shot">Shot</string>
     <string name="title_activity_running_take">RunningTake</string>
+    <string name="media">Media</string>
+    
+     <string-array name="mediaType">
+        <item>SD-Card</item>
+        <item>Compact Flash</item>
+        <item>8mm</item>
+        <item>16mm</item>
+        <item>35mm</item>
+        <item>70mm</item>
+        <item>HI8</item>
+        <item>VHS</item>
+        <item>DVD</item>
+        <item>MiniDVD</item>
+        <item>DV</item>
+        <item>MiniDV</item>
+        <item>MMC</item>
+        <item>other</item>
+    </string-array>
+    
+     <string-array name="storageFormat">
+        <item>TB</item>
+        <item>GB</item>
+        <item>MB</item>
+        <item>KB</item>
+        <item>B</item>
+    </string-array>
 
 </resources>
