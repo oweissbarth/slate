@@ -15,6 +15,7 @@ import android.support.v4.app.ListFragment;
 public class EquipmentTab extends ListFragment {
 	
 	private byte category = -1;
+	private String[] items;
 
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
@@ -24,6 +25,7 @@ public class EquipmentTab extends ListFragment {
 	public void onListItemClick(ListView parent, View view, int position, long id){
 		if(category == -1){
 			this.category = (byte) position;
+			Log.d("Equipment", "Set category to " + this.category);
 			listItems();
 			
 		}else{
@@ -34,6 +36,10 @@ public class EquipmentTab extends ListFragment {
 				case 2:		i = new Intent(getActivity(), EditMedia.class);break;
 				default:	i = null;break;
 			}
+			Log.d("Equipment", "(items.length; position)=("+items.length+";"+position+")");
+			if(position==(items.length-1))
+				i.putExtra("newObject", true);
+				
 			i.putExtra("id", position);
 			startActivity(i);
 		}
@@ -42,14 +48,15 @@ public class EquipmentTab extends ListFragment {
 	private void listItems(){
 		ArrayAdapter<String> a = null;
 		switch(category){
-			case -1:	a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, new String[]{"Cameras", "Lenses", "Media"});break;
+			case -1:	this.items =  new String[]{"Cameras", "Lenses", "Media"};break;
 			
-			case 0:		a = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, ProjectFile.project.getEquipment().getCameraList());break;
+			case 0:		this.items = ProjectFile.project.getEquipment().getCameraList();break;
 						
-			case 1:		a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, ProjectFile.project.getEquipment().getLensList());break;
+			case 1:		this.items = ProjectFile.project.getEquipment().getLensList();break;
 			
-			case 2:		a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, ProjectFile.project.getEquipment().getMediaList());break;
+			case 2:		this.items = ProjectFile.project.getEquipment().getMediaList();break;
 		}
+		a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, this.items);
 		setListAdapter(a);
 	}
 

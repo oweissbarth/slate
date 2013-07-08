@@ -393,7 +393,8 @@ public class ProjectFile {
 							}break;
 				
 				case 39:	if(t[i].getId()==703){
-								media.setStorage(Integer.parseInt(t[i].getValue()));
+								media.setStorage(Integer.parseInt(t[i].getValue().split(",")[0]));
+								media.setStorageFormat(Integer.parseInt(t[i].getValue().split(",")[1]));
 								state=40;
 							}else{
 								valid= false;Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());Log.d("Parsing", "Error while parsing at state " +state+ " left with code "+t[i].getId());

@@ -1,5 +1,7 @@
 package de.oweissbarth.slate;
 
+import java.util.concurrent.ExecutionException;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -28,7 +30,16 @@ public class ProjectTab extends ListFragment {
 		
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
-		this.listItems();
+		try {
+			MainActivity.loading.get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//this.listItems();
 	}
 		
 	public void onListItemClick(ListView parent, View view, int position, long id){ 
@@ -127,6 +138,6 @@ public class ProjectTab extends ListFragment {
 	
 	public void onResume(){
 		super.onResume();
-		listItems();
+		//listItems();
 	}
 }

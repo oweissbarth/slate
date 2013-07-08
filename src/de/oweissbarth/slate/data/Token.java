@@ -92,7 +92,7 @@ final class Token {
 							
 
 				default : 	newToken = false;
-							while((input[i]!='&') && (input[i]!='<') &&(i < input.length))
+							while((input[i]!='&') && (input[i]!='<') && (i < input.length))
 								i++;
 							i--;break;
 			
@@ -128,17 +128,17 @@ final class Token {
 			return 9;
 		if(identifier.equals("closeEquipment"))
 			return 10;
-		if(identifier.equals("camera"))
+		if(identifier.equals("Camera"))
 			return 11;
-		if(identifier.equals("lens"))
+		if(identifier.equals("Lens"))
 			return 12;
-		if(identifier.equals("media"))
+		if(identifier.equals("Media"))
 			return 13;
-		if(identifier.equals("closecamera"))
+		if(identifier.equals("closeCamera"))
 			return 14;
-		if(identifier.equals("closemedia"))
+		if(identifier.equals("closeMedia"))
 			return 15;
-		if(identifier.equals("closelens"))
+		if(identifier.equals("closeLens"))
 			return 16;
 		
 		//PROJECT

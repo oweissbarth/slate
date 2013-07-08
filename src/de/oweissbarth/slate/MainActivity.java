@@ -2,6 +2,7 @@ package de.oweissbarth.slate;
 
 import de.oweissbarth.slate.data.ProjectFile;
 import de.oweissbarth.slate.data.Scene;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,27 +12,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
+import android.app.ProgressDialog;
 import android.content.Intent;
 
 public class MainActivity extends FragmentActivity {
 	private FragmentTabHost tabHost;
+	public static AsyncTask loading;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Intent intent = getIntent();
-		String ProjectFileName = intent.getExtras().getString("projectName");
-		
-		ProjectFile.project = ProjectFile.load(ProjectFileName, getApplicationContext());
-		
-		Scene testScene = ProjectFile.project.addScene();
-		testScene.setDescription("Das ist meine erste TestSzene");
-		testScene.setName("DerTest");
-		
-		
+
 		tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 		tabHost.setup(this, getSupportFragmentManager(), R.id.tabFragmentLayout);
+
+	
 		
+		Intent intent = getIntent();
+		String projectFileName = intent.getExtras().getString("projectName");
+		
+		ProgressDialog progress = new ProgressDialog(this);
+		progress.setMessage("Loading file...");
+		this.loading = new LoadingFileTask(progress, getApplicationContext()).execute(projectFileName);
 		
 		TabSpec projectTab = tabHost.newTabSpec("project").setIndicator("Project");
 		TabSpec equipmentTab  = tabHost.newTabSpec("equipment").setIndicator("Equipment");
@@ -42,6 +44,7 @@ public class MainActivity extends FragmentActivity {
 		tabHost.addTab(equipmentTab, EquipmentTab.class, null);
 		Log.d("TABS", "Before Equipment");
 	}
+
 	
 	public void saveButton(View view){
 		ProjectFile.save(ProjectFile.project, getApplicationContext());
