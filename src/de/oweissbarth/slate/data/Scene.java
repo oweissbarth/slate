@@ -1,9 +1,9 @@
 package de.oweissbarth.slate.data;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Scene{
-	private ArrayList<Shot> shots = new ArrayList<Shot>();
+	private LinkedList<Shot> shots = new LinkedList<Shot>();
 	private int numberOfShots;
 	private int id;
 	private String name;

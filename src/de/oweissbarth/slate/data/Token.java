@@ -1,6 +1,6 @@
 package de.oweissbarth.slate.data;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import android.util.Log;
 
@@ -24,30 +24,25 @@ final class Token {
 	}
 	
 	
-	public static Token[] partitionDotSlate(String dotSlate1){
+	public static Token[] partitionDotSlate(String dotSlate){
 		//dotSlate = dotSlate.replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "");
-		String dotSlate = dotSlate1.trim();
-		for(int x = 0; x<dotSlate.length(); x++){
-			Log.d("Parsing", x+" :"+dotSlate.charAt(x));
-		}
+		dotSlate = dotSlate.trim();
+		
 		if(!dotSlate.substring(0, 13).equals("---&slate-ver")){
 			Log.d("File", "Error while Parsing File: Could not identify Header. Exspected '---&slate-ver' but found " + dotSlate.substring(0,12));
 		}
 		int fileVersion = Integer.parseInt(dotSlate.substring(13, 17));
 		
 		char[] input = dotSlate.substring(21).toCharArray();
-		ArrayList<Token> tokenList = new ArrayList<Token>();
+		LinkedList<Token> tokenList = new LinkedList<Token>();
 		
+
+		Log.d("File", "Start calculating ids");
 		String value ="";
 		int id=-1;
-		for(int x = 0; x<input.length; x++){
-			Log.d("Parsing", x+" :"+input[x]);
-		}
-		Log.d("File", "Start calculating ids");
-		
 		boolean newToken = false;
 		for(int i=0; i < input.length; i++){
-			Log.d("Parsing:", i+"/"+input.length +  "-->" + input[i]);
+			//Log.d("Parsing:", i+"/"+input.length +  "-->" + input[i]);
 			switch(input[i]){
 				case '<' : newToken = true;
 							i++;
@@ -63,10 +58,10 @@ final class Token {
 							}
 							if(close){
 								id =getTagID("close" + value);
-								Log.d("Parsing", "getTag: "+ value + " id ="+ id);
+								//Log.d("Parsing", "getTag: "+ value + " id ="+ id);
 							}else{
 								id =getTagID(value);
-								Log.d("Parsing", "getTag: "+ value + " id ="+ id);
+								//Log.d("Parsing", "getTag: "+ value + " id ="+ id);
 							}
 							break;
 							
@@ -87,7 +82,7 @@ final class Token {
 								i++;
 							}
 							id= getTagID(identifier);
-							Log.d("Parsing", "getTag: "+ identifier + " id ="+ id+ ", value="+ value);
+							//Log.d("Parsing", "getTag: "+ identifier + " id ="+ id+ ", value="+ value);
 							break;
 							
 

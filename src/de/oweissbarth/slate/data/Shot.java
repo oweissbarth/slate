@@ -1,6 +1,6 @@
 package de.oweissbarth.slate.data;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Shot{
 		private char id;
@@ -9,7 +9,7 @@ public class Shot{
 		private int focalLength;
 		private Camera camera;
 
-		private ArrayList<Take> takes = new ArrayList<Take>();
+		private LinkedList<Take> takes = new LinkedList<Take>();
 		private int numberOfTakes;
 		
 		public Shot(int idcode){

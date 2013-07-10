@@ -1,10 +1,7 @@
 package de.oweissbarth.slate;
 
-import de.oweissbarth.slate.data.ProjectFile;
-import de.oweissbarth.slate.data.Scene;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.ListFragment;
@@ -12,12 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
-import android.app.ProgressDialog;
-import android.content.Intent;
+import de.oweissbarth.slate.data.ProjectFile;
 
 public class MainActivity extends FragmentActivity {
 	private FragmentTabHost tabHost;
-	public static AsyncTask loading;
+	public static AsyncTask<String, Void, Void> loading;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,21 +22,11 @@ public class MainActivity extends FragmentActivity {
 		tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 		tabHost.setup(this, getSupportFragmentManager(), R.id.tabFragmentLayout);
 
-	
-		
-		Intent intent = getIntent();
-		String projectFileName = intent.getExtras().getString("projectName");
-		
-		ProgressDialog progress = new ProgressDialog(this);
-		progress.setMessage("Loading file...");
-		this.loading = new LoadingFileTask(progress, getApplicationContext()).execute(projectFileName);
-		
 		TabSpec projectTab = tabHost.newTabSpec("project").setIndicator("Project");
 		TabSpec equipmentTab  = tabHost.newTabSpec("equipment").setIndicator("Equipment");
 		Log.d("TABS", "Before ListScenes");
 		tabHost.addTab(projectTab, ProjectTab.class, null);
 		Log.d("TABS", "After ListScenes");
-			
 		tabHost.addTab(equipmentTab, EquipmentTab.class, null);
 		Log.d("TABS", "Before Equipment");
 	}

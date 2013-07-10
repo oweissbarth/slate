@@ -1,18 +1,16 @@
 package de.oweissbarth.slate;
 
-import java.util.Arrays;
-
-import de.oweissbarth.slate.data.ProjectFile;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+import de.oweissbarth.slate.data.ProjectFile;
 
 public class IntroActivity extends Activity {
 	private int importClicked=0;
@@ -62,11 +60,14 @@ public class IntroActivity extends Activity {
 	public void loadButtonEvent(View view){
 		Spinner projects = (Spinner)findViewById(R.id.projectsSpinner);
 		String projectName =  projects.getSelectedItem().toString();
-		Log.d("loadFile", "Projectto load is: "+ projectName);
+		Log.d("loadFile", "Project to load is: "+ projectName);
 		
-		Intent loadProjectIntoMain = new Intent(this, MainActivity.class);
-		loadProjectIntoMain.putExtra("projectName", projectName);
-		startActivity(loadProjectIntoMain);
+		
+		ProgressDialog progress = new ProgressDialog(this);
+		progress.setMessage("Loading file...");
+		progress.setIndeterminate(true);;
+		MainActivity.loading = new LoadingFileTask(progress, this);
+		MainActivity.loading.execute(projectName);
 	}
 	
 	public void importProjectButtonEvent(View view){

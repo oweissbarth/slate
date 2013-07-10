@@ -49,11 +49,11 @@
     </string-array>
     
      <string-array name="storageFormat">
-        <item>TB</item>
-        <item>GB</item>
-        <item>MB</item>
-        <item>KB</item>
-        <item>B</item>
+        <item>Tb</item>
+        <item>Gb</item>
+        <item>Mb</item>
+        <item>Kb</item>
+        <item>b</item>
     </string-array>
 
 </resources>

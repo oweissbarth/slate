@@ -1,16 +1,14 @@
 package de.oweissbarth.slate;
 
-import de.oweissbarth.slate.data.Media;
-import de.oweissbarth.slate.data.ProjectFile;
-import de.oweissbarth.slate.data.Scene;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import de.oweissbarth.slate.data.Media;
+import de.oweissbarth.slate.data.ProjectFile;
 
 public class EditMedia extends Activity {
 	private boolean newObject;

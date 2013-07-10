@@ -1,5 +1,5 @@
 package de.oweissbarth.slate.data;
-import java.util.*;
+import java.util.Arrays;
 
 public class Camera{
 		private String name;

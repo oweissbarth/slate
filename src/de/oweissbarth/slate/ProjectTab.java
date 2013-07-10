@@ -1,22 +1,18 @@
 package de.oweissbarth.slate;
 
-import java.util.concurrent.ExecutionException;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import de.oweissbarth.slate.data.ProjectFile;
-import de.oweissbarth.slate.data.Scene;
 
 public class ProjectTab extends ListFragment {
 
@@ -30,16 +26,7 @@ public class ProjectTab extends ListFragment {
 		
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
-		try {
-			MainActivity.loading.get();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//this.listItems();
+		this.listItems();
 	}
 		
 	public void onListItemClick(ListView parent, View view, int position, long id){ 

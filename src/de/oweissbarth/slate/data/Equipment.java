@@ -1,14 +1,14 @@
 package de.oweissbarth.slate.data;
-import java.util.*;
+import java.util.LinkedList;
 
 import android.util.Log;
 
 public class Equipment{
-	private ArrayList<Camera> cameras = new ArrayList<Camera>();
+	private LinkedList<Camera> cameras = new LinkedList<Camera>();
 	private int numberOfCameras;
-	private ArrayList<Lens> lenses = new ArrayList<Lens>();
+	private LinkedList<Lens> lenses = new LinkedList<Lens>();
 	private int numberOfLenses;
-	private ArrayList<Media> media = new ArrayList<Media>();
+	private LinkedList<Media> media = new LinkedList<Media>();
 	private int numberOfMedia;
 
 	public Equipment(){

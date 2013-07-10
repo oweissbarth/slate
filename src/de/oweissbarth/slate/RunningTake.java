@@ -1,9 +1,8 @@
 package de.oweissbarth.slate;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
-import android.view.Menu;
+import android.os.Bundle;
 
 public class RunningTake extends Activity {
 

@@ -2,19 +2,13 @@ package de.oweissbarth.slate;
 
 import java.util.Arrays;
 
-import de.oweissbarth.slate.data.Project;
-import de.oweissbarth.slate.data.ProjectFile;
-
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.os.Build;
+import de.oweissbarth.slate.data.Project;
+import de.oweissbarth.slate.data.ProjectFile;
 
 public class NewProject extends Activity {
 

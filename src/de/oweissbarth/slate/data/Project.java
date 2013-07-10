@@ -1,12 +1,12 @@
 package de.oweissbarth.slate.data;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Project{
 	
 	private String name;
 	private String director;
-	private ArrayList<Scene> scenes = new ArrayList<Scene>();
+	private LinkedList<Scene> scenes = new LinkedList<Scene>();
 	private int numberOfScenes;
 	private Equipment equipment;
 
