@@ -2,7 +2,6 @@ package de.oweissbarth.slate;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -12,9 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.actionbarsherlock.app.SherlockListFragment;
+
 import de.oweissbarth.slate.data.ProjectFile;
 
-public class ProjectTab extends ListFragment {
+public class ProjectTab extends SherlockListFragment {
 
 	private byte level = 0;
 	
@@ -26,6 +28,7 @@ public class ProjectTab extends ListFragment {
 		
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
+		MainActivity.projectFragment= this;
 		this.listItems();
 	}
 		

@@ -1,22 +1,25 @@
 package de.oweissbarth.slate;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 
-public class EditShot extends Activity {
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+
+public class EditShot extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_shot);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_shot, menu);
+	
+	public boolean onCreateOptionsMenu(Menu menu){
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.edit_menu, menu);
 		return true;
 	}
+
+
 
 }

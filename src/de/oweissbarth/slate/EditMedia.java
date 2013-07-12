@@ -1,16 +1,22 @@
 package de.oweissbarth.slate;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+
 import de.oweissbarth.slate.data.Media;
 import de.oweissbarth.slate.data.ProjectFile;
 
-public class EditMedia extends Activity {
+public class EditMedia extends SherlockActivity {
 	private boolean newObject;
 	private int media;
 	
@@ -19,6 +25,12 @@ public class EditMedia extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_media);
 		checkIfNew();
+	}
+	
+	public boolean onCreateOptionsMenu(Menu menu){
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.edit_menu, menu);
+		return true;
 	}
 
 	private void checkIfNew(){
@@ -51,7 +63,7 @@ public class EditMedia extends Activity {
 		checkIfNew();
 	}
 	
-	public void saveButton(View view){
+	public boolean done(MenuItem item){
 		Media media;
 		if(newObject){
 			media = ProjectFile.project.getEquipment().addMedia();
@@ -69,6 +81,17 @@ public class EditMedia extends Activity {
 		media.setStorage(storageSize);
 		media.setStorageFormat(format);
 		this.finish();
+		return true;
 	}
-
+	
+	public boolean discard(MenuItem item){
+		this.finish();
+		return true;
+	}
+	
+	public void clickEvent(){
+		Toast test = new Toast(this);
+		test.setText("Bla Keks");
+		test.show();
+	}
 }

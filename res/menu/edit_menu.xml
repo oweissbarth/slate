@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_done"
+        android:showAsAction="always"
+        android:title="@string/action_done"
+        android:onClick="done"/>
+    
+    <item
+        android:id="@+id/action_discard"
+        android:showAsAction="always"
+        android:title="@string/action_discard"
+        android:onClick="discard"
+    />
+
+</menu>

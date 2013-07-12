@@ -95,12 +95,13 @@ public class ProjectFile {
 	    }catch(Exception e){
 	    	return null;
 	    }
-	    return parseDotSlate(slate);
+	    progress.setMax(2*numberOfLines);
+	    return parseDotSlate(slate, progress);
 	}
 	
 	
-	public static Project parseDotSlate(String input){
-		Token[] t = Token.partitionDotSlate(input);
+	public static Project parseDotSlate(String input, ProgressDialog progress){
+		Token[] t = Token.partitionDotSlate(input, progress);
 		
 		if(t==null)
 			Log.d("Parsing", "Got Null Pointer");
@@ -119,6 +120,7 @@ public class ProjectFile {
 		Log.d("Parsing", "Start Finite State Maschine with number of Token: " + t.length);
 		for(int i=0; (i< t.length)&&(valid); i++){
 			//Log.d("Parsing", "Parsing at i =" + i);
+			progress.incrementProgressBy(1);
 			switch(state){
 				case 1:		if(t[i].getId()==1){
 								state=2;

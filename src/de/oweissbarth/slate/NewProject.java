@@ -2,21 +2,22 @@ package de.oweissbarth.slate;
 
 import java.util.Arrays;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.actionbarsherlock.app.SherlockActivity;
+
 import de.oweissbarth.slate.data.Project;
 import de.oweissbarth.slate.data.ProjectFile;
 
-public class NewProject extends Activity {
+public class NewProject extends SherlockActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_project);
-		
 	}
 	
 	

@@ -2,34 +2,55 @@ package de.oweissbarth.slate;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTabHost;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
-import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
+
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockListFragment;
+
 import de.oweissbarth.slate.data.ProjectFile;
 
-public class MainActivity extends FragmentActivity {
-	private FragmentTabHost tabHost;
+public class MainActivity extends SherlockFragmentActivity {
+	private ActionBar actionBar;
 	public static AsyncTask<String, Void, Void> loading;
-	@Override
+	public static SherlockListFragment projectFragment;
+	public static SherlockListFragment equipmentFragment;
+
+	
 	public void onCreate(Bundle savedInstanceState) {
+		Log.d("ACTIONBAR", "Started Main");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
-		tabHost.setup(this, getSupportFragmentManager(), R.id.tabFragmentLayout);
-
-		TabSpec projectTab = tabHost.newTabSpec("project").setIndicator("Project");
-		TabSpec equipmentTab  = tabHost.newTabSpec("equipment").setIndicator("Equipment");
-		Log.d("TABS", "Before ListScenes");
-		tabHost.addTab(projectTab, ProjectTab.class, null);
-		Log.d("TABS", "After ListScenes");
-		tabHost.addTab(equipmentTab, EquipmentTab.class, null);
-		Log.d("TABS", "Before Equipment");
+		
+		actionBar = getSupportActionBar();
+		
+		Log.d("ACTIONBAR", "Got ActionBar");
+		
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		ActionBar.Tab projectTab = actionBar.newTab();
+		ActionBar.Tab equipmentTab = actionBar.newTab();
+		
+		Log.d("ACTIONBAR", "Created Tabs");
+		
+		projectTab.setText("Project");
+		projectTab.setTag("projectTab");
+		equipmentTab.setText("Equipment");
+		equipmentTab.setTag("equipmentTab");
+		
+		projectTab.setTabListener(new MainTabListener());
+		equipmentTab.setTabListener(new MainTabListener());
+		
+		Log.d("ACTIONBAR", "Set onTabListener");
+		
+		actionBar.addTab(projectTab);
+		actionBar.addTab(equipmentTab);
+		
+		Log.d("ACTIONBAR", "Added Tabs");
 	}
+	
+	
 
 	
 	public void saveButton(View view){
@@ -41,12 +62,12 @@ public class MainActivity extends FragmentActivity {
 	public void onBackPressed(){
 		Log.d("Back", "Back from parent Activity");
 		//super.onBackPressed();
-		ListFragment fragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.tabFragmentLayout);
-	
-		if(fragment instanceof EquipmentTab)
-			((EquipmentTab)fragment).onBackPressed();
-		else
-			((ProjectTab)fragment).onBackPressed();
+		int activeTab = actionBar.getSelectedTab().getPosition();
+		switch(activeTab){
+		case 0: ((ProjectTab) projectFragment).onBackPressed();break;
+		case 1: ((EquipmentTab) equipmentFragment).onBackPressed();break;
+		}
+		
 	}
 
 

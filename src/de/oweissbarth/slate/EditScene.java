@@ -1,15 +1,20 @@
 package de.oweissbarth.slate;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+
 import de.oweissbarth.slate.data.ProjectFile;
 import de.oweissbarth.slate.data.Scene;
 
-public class EditScene extends Activity {
+public class EditScene extends SherlockActivity {
 	
 	private int scene;
 	private boolean newObject;
@@ -21,6 +26,12 @@ public class EditScene extends Activity {
 		checkIfNew();
 		
 		scene = getIntent().getExtras().getInt("scene");
+	}
+	
+	public boolean onCreateOptionsMenu(Menu menu){
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.edit_menu, menu);
+		return true;
 	}
 	
 	
@@ -50,7 +61,7 @@ public class EditScene extends Activity {
 		checkIfNew();
 	}
 	
-	public void saveButton(View view){
+	public boolean done(MenuItem item){
 		Scene scene;
 		if(newObject){
 			scene = ProjectFile.project.addScene();
@@ -64,6 +75,12 @@ public class EditScene extends Activity {
 		scene.setName(name);
 		scene.setDescription(description);
 		this.finish();
+		return true;
+	}
+	
+	public boolean discard(MenuItem item){
+		this.finish();
+		return true;
 	}
 
 

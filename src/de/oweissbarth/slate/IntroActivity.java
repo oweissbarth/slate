@@ -1,6 +1,5 @@
 package de.oweissbarth.slate;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockActivity;
+
 import de.oweissbarth.slate.data.ProjectFile;
 
-public class IntroActivity extends Activity {
+public class IntroActivity extends SherlockActivity {
 	private int importClicked=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,8 @@ public class IntroActivity extends Activity {
 		
 		ProgressDialog progress = new ProgressDialog(this);
 		progress.setMessage("Loading file...");
-		progress.setIndeterminate(true);;
+		progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		progress.setIndeterminate(false);
 		MainActivity.loading = new LoadingFileTask(progress, this);
 		MainActivity.loading.execute(projectName);
 	}

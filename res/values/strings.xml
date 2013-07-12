@@ -4,16 +4,18 @@
     <string name="app_name">Slate</string>
     <string name="app_slogan">Filmmaker\'s best friend</string>
     <string name="button_create_new_project">Create a new Project</string>
-    <string name="action_settings">Settings</string>
     <string name="newProject">New Project</string>
     <string name="importProject">Import Project</string>
     <string name="load">Load</string>
     <string name="edit_item">Edit</string>
     <string name="delete_item">Delete</string>
+    <string name="action_done">done</string>
+    <string name="action_discard">discard</string>
 
-    <color name="darkblue">#142933</color>
+    <color name="darkblue">#194A7F</color>
     <color name="lightgrey">#D0D4D6</color>
     <color name="darkgrey">#050F1A</color>
+    <color name="background">#0C2540</color>
 
     <string name="title_activity_new_project">NewProject</string>
     <string name="title_activity_main">Slate</string>
@@ -48,12 +50,24 @@
         <item>other</item>
     </string-array>
     
-     <string-array name="storageFormat">
+     <string-array name="storageFormatByte">
         <item>Tb</item>
         <item>Gb</item>
         <item>Mb</item>
         <item>Kb</item>
         <item>b</item>
     </string-array>
+    
+     <string-array name="storageFormatFilm">
+        <item>m</item>
+        <item>ft</item>
+    </string-array>
+    
+     <string-array name="storageFormatTime">
+        <item>min</item>
+        <item>h</item>
+    </string-array>
+        <string name="lens">Lens</string>
+        <string name="milimeter">mm</string>
 
 </resources>

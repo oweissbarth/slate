@@ -2,6 +2,7 @@ package de.oweissbarth.slate.data;
 
 import java.util.LinkedList;
 
+import android.app.ProgressDialog;
 import android.util.Log;
 
 final class Token {
@@ -24,7 +25,7 @@ final class Token {
 	}
 	
 	
-	public static Token[] partitionDotSlate(String dotSlate){
+	public static Token[] partitionDotSlate(String dotSlate, ProgressDialog progress){
 		//dotSlate = dotSlate.replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "");
 		dotSlate = dotSlate.trim();
 		
@@ -43,6 +44,7 @@ final class Token {
 		boolean newToken = false;
 		for(int i=0; i < input.length; i++){
 			//Log.d("Parsing:", i+"/"+input.length +  "-->" + input[i]);
+			progress.incrementProgressBy(1);
 			switch(input[i]){
 				case '<' : newToken = true;
 							i++;
