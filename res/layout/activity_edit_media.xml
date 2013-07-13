@@ -34,12 +34,12 @@
     </LinearLayout>
 
     <Spinner
-        android:id="@+id/mediaType"
+        android:id="@+id/storageType"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:entries="@array/mediaType"/>
+        android:entries="@array/mediaType" />
 
     <LinearLayout
         android:layout_width="match_parent"

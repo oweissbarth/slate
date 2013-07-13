@@ -35,7 +35,10 @@
     
      <string-array name="mediaType">
         <item>SD-Card</item>
+        <item>mini-SD-Card</item>
+        <item>micro-SD-Card</item>
         <item>Compact Flash</item>
+        <item>MMC</item>
         <item>8mm</item>
         <item>16mm</item>
         <item>35mm</item>
@@ -46,8 +49,6 @@
         <item>MiniDVD</item>
         <item>DV</item>
         <item>MiniDV</item>
-        <item>MMC</item>
-        <item>other</item>
     </string-array>
     
      <string-array name="storageFormatByte">
