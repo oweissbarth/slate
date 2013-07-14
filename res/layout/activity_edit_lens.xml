@@ -11,15 +11,6 @@
         android:layout_marginRight="12dp"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/Headline_Lens"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="@string/lens"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +20,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/lensName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -48,8 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ToggleButton"
-            android:textOff="fixed focus"
-            android:textOn="variable focus" />
+            android:textOff="variable focus"
+            android:textOn="fixed focus"
+            android:onClick="changeFocusType" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +55,7 @@
             android:layout_height="wrap_content" >
 
             <EditText
-                android:id="@+id/minFocalLength"
+                android:id="@+id/minFocalLengthValue"
                 android:layout_width="192dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".9"
@@ -75,12 +67,12 @@
             </EditText>
 
             <TextView
-                android:id="@+id/minFocalLength"
+                android:id="@+id/minFocalLengthmm"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_gravity="right"
                 android:layout_weight=".5"
-                android:gravity="center"
+                android:gravity="center|bottom"
                 android:text="@string/milimeter"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -95,21 +87,22 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/maxFocalLength"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone" >
 
             <EditText
-                android:id="@+id/EditText01"
+                android:id="@+id/maxFocalLengthValue"
                 android:layout_width="192dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".9"
                 android:ems="10"
-                android:hint="focal length"
+                android:hint="maximal focal length"
                 android:inputType="number" />
 
             <TextView
-                android:id="@+id/TextView01"
+                android:id="@+id/maxFocalLengthmm"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_gravity="right"

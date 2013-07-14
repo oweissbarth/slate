@@ -31,6 +31,14 @@ public class Lens{
 			}else
 				return (new int[] {this.minFocalLength, this.maxFocalLength});	
 		}
+		
+		public int getMinFocalLength(){
+			return this.minFocalLength;
+		}
+		
+		public int getMaxFocalLength(){
+			return this.maxFocalLength;
+		}
 
 		public int getId(){
 			return this.id;

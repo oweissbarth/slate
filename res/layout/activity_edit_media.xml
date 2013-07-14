@@ -4,15 +4,12 @@
     android:background="@color/background"
     android:orientation="vertical" >
 
-
-    <TextView
-        android:id="@+id/Headline_Lens"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="@string/media"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </LinearLayout>
 
     <EditText
         android:id="@+id/mediaName"
@@ -55,13 +52,6 @@
         android:layout_marginRight="12dp"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/minFocalLength"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Storage"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -69,15 +59,17 @@
             <EditText
                 android:id="@+id/storageSize"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
+                android:hint="storage size"
                 android:inputType="number" />
 
             <Spinner
                 android:id="@+id/storageFormat"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:entries="@array/storageFormatByte"/>
+                android:entries="@array/storageFormatByte"
+                android:gravity="bottom" />
 
         </LinearLayout>
     </LinearLayout>

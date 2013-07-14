@@ -17,16 +17,16 @@
     <color name="darkgrey">#050F1A</color>
     <color name="background">#0C2540</color>
 
-    <string name="title_activity_new_project">NewProject</string>
+    <string name="title_activity_new_project">New Project</string>
     <string name="title_activity_main">Slate</string>
     <string name="title_activity_project_tab">ProjectTab</string>
     <string name="title_activity_equipment_tab">EquipmentTab</string>
-    <string name="title_activity_edit_scene">EditScene</string>
-    <string name="title_activity_edit_shot">EditShot</string>
-    <string name="title_activity_edit_take">EditTake</string>
-    <string name="title_activity_edit_camera">EditCamera</string>
-    <string name="title_activity_edit_lens">EditLens</string>
-    <string name="title_activity_edit_media">EditMedia</string>
+    <string name="title_activity_edit_scene">Edit Scene</string>
+    <string name="title_activity_edit_shot">Edit Shot</string>
+    <string name="title_activity_edit_take">Edit Take</string>
+    <string name="title_activity_edit_camera">Edit Camera</string>
+    <string name="title_activity_edit_lens">Edit Lens</string>
+    <string name="title_activity_edit_media">Edit Media</string>
     <string name="interior">interior</string>
     <string name="exterior">exterior</string>
     <string name="shot">Shot</string>
