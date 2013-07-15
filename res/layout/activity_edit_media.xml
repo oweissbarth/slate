@@ -68,7 +68,6 @@
                 android:id="@+id/storageFormat"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:entries="@array/storageFormatByte"
                 android:gravity="bottom" />
 
         </LinearLayout>

@@ -26,8 +26,8 @@ public class Media{
 		return this.storage;
 	}
 	
-	public int getStorageFormat(){
-		return this.storageFormat;
+	public short getStorageFormat(){
+		return (short)this.storageFormat;
 	}
 
 	public short getType(){

@@ -53,7 +53,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 
 	
-	public void saveButton(View view){
+	public void save(){
 		ProjectFile.save(ProjectFile.project, getApplicationContext());
 		Toast savedNotification = Toast.makeText(getApplicationContext(), "saved File", Toast.LENGTH_SHORT);
 		savedNotification.show();
@@ -61,13 +61,17 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	public void onBackPressed(){
 		Log.d("Back", "Back from parent Activity");
-		//super.onBackPressed();
 		int activeTab = actionBar.getSelectedTab().getPosition();
 		switch(activeTab){
 		case 0: ((ProjectTab) projectFragment).onBackPressed();break;
 		case 1: ((EquipmentTab) equipmentFragment).onBackPressed();break;
 		}
 		
+	}
+	
+	protected void onStop(){
+		super.onStop();
+		save();
 	}
 
 

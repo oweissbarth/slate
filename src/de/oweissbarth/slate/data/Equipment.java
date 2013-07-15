@@ -40,27 +40,16 @@ public class Equipment{
 	}
 	
 	public Camera getCameraById(int id){
-		Camera[] cameras = getAvailableCameras();
-		for(Camera camera: cameras)
-			if(camera.getId()==id)
-				return camera;
-		return null;
+		return this.cameras.get(id);
 	}
 	
 	public Lens getLensById(int id){
-		Lens[] lenses = getAvailableLenses();
-		for(Lens lens: lenses)
-			if(lens.getId()==id)
-				return lens;
-		return null;
+		return this.lenses.get(id);
+		
 	}
 	
 	public Media getMediaById(int id){
-		Media[] media = getAvailableMedia();
-		for(Media medium: media)
-			if(medium.getId()==id)
-				return medium;
-		return null;
+		return this.media.get(id);
 	}
 	
 	public String[] getCameraList(){

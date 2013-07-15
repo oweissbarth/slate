@@ -53,10 +53,10 @@ public class EditLens extends SherlockActivity {
 			this.fixed = ProjectFile.project.getEquipment().getLensById(lens).getFixed();
 			((EditText) findViewById(R.id.lensName)).setText(ProjectFile.project.getEquipment().getLensById(lens).getName());
 			((ToggleButton) findViewById(R.id.focusType)).setChecked(ProjectFile.project.getEquipment().getLensById(lens).getFixed());
-			((EditText) findViewById(R.id.minFocalLengthValue)).setText(ProjectFile.project.getEquipment().getLensById(lens).getMinFocalLength());
+			((EditText) findViewById(R.id.minFocalLengthValue)).setText(String.valueOf(ProjectFile.project.getEquipment().getLensById(lens).getMinFocalLength()));
 			if(!fixed){
 			((LinearLayout)findViewById(R.id.maxFocalLength)).setVisibility(View.GONE);
-			((EditText) findViewById(R.id.maxFocalLengthValue)).setText(ProjectFile.project.addEquipment().getLensById(lens).getMaxFocalLength());
+			((EditText) findViewById(R.id.maxFocalLengthValue)).setText(String.valueOf(ProjectFile.project.addEquipment().getLensById(lens).getMaxFocalLength()));
 			}
 		}else{
 			((EditText) findViewById(R.id.lensName)).setText("");
@@ -81,7 +81,7 @@ public class EditLens extends SherlockActivity {
 		}
 		Log.d("SAVE", "fixed:"+this.fixed);
 		String name = ((EditText) findViewById(R.id.lensName)).getText().toString();
-		boolean fixed = !((ToggleButton) findViewById(R.id.focusType)).isChecked();
+		this.fixed = ((ToggleButton) findViewById(R.id.focusType)).isChecked();
 		int minFocalLength = Integer.parseInt(((EditText) findViewById(R.id.minFocalLengthValue)).getText().toString());
 		int maxFocalLength=0;
 		if(!this.fixed){

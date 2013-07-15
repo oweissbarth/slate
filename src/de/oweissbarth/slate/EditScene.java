@@ -45,7 +45,7 @@ public class EditScene extends SherlockActivity {
 		
 		if(!newObject){
 			Log.d("EDITOR", "Existing Scene");
-			((EditText) findViewById(R.id.scene_name)).setText((ProjectFile.project.getSceneById(scene)).getName());
+			((EditText) findViewById(R.id.scene_name)).setText(ProjectFile.project.getSceneById(scene).getName());
 			((EditText) findViewById(R.id.scene_description)).setText((ProjectFile.project.getSceneById(scene)).getDescription());
 			
 		}else{

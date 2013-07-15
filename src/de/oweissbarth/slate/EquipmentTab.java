@@ -39,7 +39,8 @@ public class EquipmentTab extends SherlockListFragment {
 			Log.d("Equipment", "(items.length; position)=("+items.length+";"+position+")");
 			if(position==(items.length-1))
 				i.putExtra("newObject", true);
-				
+			else
+				i.putExtra("newObject", false);
 			i.putExtra("id", position);
 			startActivity(i);
 		}

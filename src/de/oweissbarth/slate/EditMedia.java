@@ -16,42 +16,25 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
+import de.oweissbarth.slate.data.Equipment;
 import de.oweissbarth.slate.data.Media;
 import de.oweissbarth.slate.data.ProjectFile;
 
-public class EditMedia extends SherlockActivity {
+public class EditMedia extends SherlockActivity implements OnItemSelectedListener {
 	private boolean newObject;
 	private int media;
-    
+    private Spinner storageFormat;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_media);
+		this.storageFormat = (Spinner) findViewById(R.id.storageFormat);
 		checkIfNew();
-		Spinner storageType = (Spinner)findViewById(R.id.storageType);
-		
-		 storageType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-			 public void onItemSelected(AdapterView<?> adapter, View view, int i, long position){
-				 Spinner storageFormat = (Spinner)findViewById(R.id.storageFormat);
-				 
-				if(position<=4)
-					 storageFormat.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.storageFormatByte)));
-				else if(position<=8)
-					 storageFormat.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.storageFormatFilm)));
-				else if (position<=14)
-					 storageFormat.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.storageFormatTime)));
-						
-			 }
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		 });
 	}
 	
 	public boolean onCreateOptionsMenu(Menu menu){
+		Log.d("ONCREATEOPTIONSMENU", "");
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.edit_menu, menu);
 		return true;
@@ -66,11 +49,14 @@ public class EditMedia extends SherlockActivity {
 		
 		if(!newObject){
 			Log.d("EDITOR", "Existing Media");
-			this.media=i.getExtras().getInt("id");
+			Log.d("Trying to access media with id ", ""+media);
 			((EditText) findViewById(R.id.mediaName)).setText(ProjectFile.project.getEquipment().getMediaById(media).getName());
 			((Spinner) findViewById(R.id.storageType)).setSelection(ProjectFile.project.getEquipment().getMediaById(media).getType());
-			((EditText) findViewById(R.id.storageSize)).setText(ProjectFile.project.getEquipment().getMediaById(media).getStorage());
-			((Spinner) findViewById(R.id.storageFormat)).setSelection(ProjectFile.project.addEquipment().getMediaById(media).getStorageFormat());
+			((EditText) findViewById(R.id.storageSize)).setText(String.valueOf(ProjectFile.project.getEquipment().getMediaById(media).getStorage()));
+			Log.d("Edit Media", "BEfore chooseFormat");
+			chooseFormat(this.storageFormat, ProjectFile.project.getEquipment().getMediaById(media).getType());
+			Log.d("Edit Media", "format id: " +ProjectFile.project.getEquipment().getMediaById(media).getStorageFormat());
+			this.storageFormat.setSelection(ProjectFile.project.getEquipment().getMediaById(media).getStorageFormat());
 			
 		}else{
 			Log.d("EDITOR", "New Media");
@@ -111,6 +97,29 @@ public class EditMedia extends SherlockActivity {
 	public boolean discard(MenuItem item){
 		this.finish();
 		return true;
+	}
+	
+	private void chooseFormat(Spinner storageFormat,int type){
+		Log.d("CHOOSEFORMAT","ChooseFormat started");
+		if(type<=4)
+			 storageFormat.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.storageFormatByte)));
+		else if(type<=8)
+			 storageFormat.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.storageFormatFilm)));
+		else if (type<=14)
+			 storageFormat.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.storageFormatTime)));
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View view, int id,
+			long position) {
+		chooseFormat(this.storageFormat, id);
+		
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
