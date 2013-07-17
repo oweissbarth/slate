@@ -16,7 +16,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package de.oweissbarth.slate.data;
+package de.oweissbarth.slate.support;
 
 import java.util.LinkedList;
 

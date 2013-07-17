@@ -30,7 +30,8 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.LoadingFileTask;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class IntroActivity extends SherlockActivity {
 	private int importClicked=0;

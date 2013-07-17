@@ -18,6 +18,9 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,15 +29,20 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
+import de.oweissbarth.slate.support.SceneListAdapter;
 
-public class ProjectTab extends SherlockListFragment {
+public class ProjectTab extends SherlockListFragment implements OnClickListener{
 
 	private byte level = 0;
 	
@@ -47,6 +55,10 @@ public class ProjectTab extends SherlockListFragment {
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
 		MainActivity.projectFragment= this;
+		Button footer = new Button(getActivity());
+		footer.setText("Add Scene");
+		footer.setOnClickListener(this);
+		getListView().addFooterView(footer);
 		this.listItems();
 	}
 		
@@ -73,28 +85,31 @@ public class ProjectTab extends SherlockListFragment {
 		}
 	}
 	
-	private void listItems(){
-		registerForContextMenu(getListView());
-		
+	private void listItems(){	
+
 		switch(this.level){
-		case 0:  	items = ProjectFile.project.getSceneList();break;
+		case 0:  	setListAdapter(new SceneListAdapter(this.getActivity(), ProjectFile.project.getScenes()));break;
 		case 1:	  	items = ProjectFile.project.getSceneById(scene).getShotList();break;
 		case 2:		items = ProjectFile.project.getSceneById(scene).getShotById(shot).getTakeList();break;
 		default:	items = null;break;
 		}
-
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
-		setListAdapter(adapter);
+		registerForContextMenu(getListView());
+	}
+	
+	@Override
+	public void onClick(View view) {
+		Class editActivity = chooseEditActivity();
+		Intent intent = new Intent(getActivity(), editActivity);
+		intent.putExtra("newObject", true);
+		startActivity(intent);
 	}
 	
 	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo){
 		super.onCreateContextMenu(menu, view, menuInfo);
 		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-		if(info.id != (items.length-1)){
 		menu.setHeaderTitle("Edit");
 		MenuInflater inflater = getActivity().getMenuInflater();
 		inflater.inflate(R.menu.project_tab, menu);
-		}
 	}
 	
 	public boolean onContextItemSelected(MenuItem item){
@@ -119,6 +134,17 @@ public class ProjectTab extends SherlockListFragment {
 										Log.d("LIST", "About to start editor");
 										startActivity(intent);
 										return true;
+			
+			case R.id.delete_item:		/*Builder confirmation = new AlertDialog.Builder(getActivity());
+										confirmation.setMessage("Do you really want to delete this? I warned you, so don't blame me later");
+										confirmation.setCancelable(true);
+										confirmation.setPositiveButton("Confirm", this);
+										confirmation.setNegativeButton("Cancel", this);
+										AlertDialog dialog = confirmation.create();*/
+										ProjectFile.project.deleteScene(listItem);
+										listItems();
+										return true;
+										
 		}
 		return false;
 	}
@@ -147,6 +173,6 @@ public class ProjectTab extends SherlockListFragment {
 	
 	public void onResume(){
 		super.onResume();
-		//listItems();
+		listItems();
 	}
 }

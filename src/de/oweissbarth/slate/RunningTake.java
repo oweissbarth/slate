@@ -18,7 +18,7 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;

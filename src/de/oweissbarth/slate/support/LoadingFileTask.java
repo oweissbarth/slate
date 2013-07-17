@@ -16,36 +16,32 @@
  *     You should have received a copy of the GNU General Public License
  *     along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package de.oweissbarth.slate;
+package de.oweissbarth.slate.support;
 
-import android.support.v4.app.FragmentTransaction;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import de.oweissbarth.slate.MainActivity;
 
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.actionbarsherlock.app.ActionBar.TabListener;
-
-public class MainTabListener implements TabListener {
-
-	@Override
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-			if (tab.getPosition()==0){
-				ProjectTab frag = new ProjectTab();
-				ft.replace(android.R.id.content, frag);
-			}else if(tab.getPosition()==1){
-				EquipmentTab frag = new EquipmentTab();
-				ft.replace(android.R.id.content, frag);
-			}
+public class LoadingFileTask extends AsyncTask<String, Void, Void>{
+	private ProgressDialog progress;
+	private Context context;
+	public LoadingFileTask(ProgressDialog progress, Context context){
+		this.progress = progress;
+		this.context = context;
 	}
 
-	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-
+	public void onPreExecute(){
+		progress.show();
 	}
-
-	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-
+	protected Void doInBackground(String... params) {
+		ProjectFile.project = ProjectFile.load(params[0], this.context, progress);
+		return null;
 	}
-
+	public void onPostExecute(Void unused){
+		Intent loadProjectIntoMain = new Intent(this.context, MainActivity.class);
+		progress.dismiss();
+		this.context.startActivity(loadProjectIntoMain);
+	}
 }

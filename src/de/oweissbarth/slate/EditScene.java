@@ -22,14 +22,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-import de.oweissbarth.slate.data.ProjectFile;
 import de.oweissbarth.slate.data.Scene;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class EditScene extends SherlockActivity {
 	
@@ -64,6 +65,7 @@ public class EditScene extends SherlockActivity {
 			Log.d("EDITOR", "Existing Scene");
 			((EditText) findViewById(R.id.scene_name)).setText(ProjectFile.project.getSceneById(scene).getName());
 			((EditText) findViewById(R.id.scene_description)).setText((ProjectFile.project.getSceneById(scene)).getDescription());
+			((RadioGroup)findViewById(R.id.int_ext)).check(ProjectFile.project.getSceneById(scene).getExt()? R.id.exterior : R.id.interior);
 			
 		}else{
 			Log.d("EDITOR", "NewScene");
@@ -88,9 +90,11 @@ public class EditScene extends SherlockActivity {
 		
 		String name = ((EditText)findViewById(R.id.scene_name)).getText().toString();
 		String description= ((EditText)findViewById(R.id.scene_description)).getText().toString();
+		boolean ext = ((RadioGroup)findViewById(R.id.int_ext)).getCheckedRadioButtonId()==R.id.exterior;
 		
 		scene.setName(name);
 		scene.setDescription(description);
+		scene.setExt(ext);
 		this.finish();
 		return true;
 	}

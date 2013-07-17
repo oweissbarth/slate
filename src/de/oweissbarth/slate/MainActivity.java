@@ -22,16 +22,19 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.app.ActionBar.Tab;
 
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
 
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends SherlockFragmentActivity implements TabListener{
 	private ActionBar actionBar;
 	public static AsyncTask<String, Void, Void> loading;
 	public static SherlockListFragment projectFragment;
@@ -58,8 +61,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		equipmentTab.setText("Equipment");
 		equipmentTab.setTag("equipmentTab");
 		
-		projectTab.setTabListener(new MainTabListener());
-		equipmentTab.setTabListener(new MainTabListener());
+		projectTab.setTabListener(this);
+		equipmentTab.setTabListener(this);
 		
 		Log.d("ACTIONBAR", "Set onTabListener");
 		
@@ -91,6 +94,28 @@ public class MainActivity extends SherlockFragmentActivity {
 		ProjectFile.saveIfNecessary(this);
 	}
 	
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		if (tab.getPosition()==0){
+			ProjectTab frag = new ProjectTab();
+			ft.replace(android.R.id.content, frag);
+		}else if(tab.getPosition()==1){
+			EquipmentTab frag = new EquipmentTab();
+			ft.replace(android.R.id.content, frag);
+		}
+	}
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+	
+	}
+	
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+	
+	}
+
 
 	
 	

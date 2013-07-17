@@ -28,7 +28,7 @@ import android.widget.EditText;
 import com.actionbarsherlock.app.SherlockActivity;
 
 import de.oweissbarth.slate.data.Project;
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class NewProject extends SherlockActivity {
 

@@ -16,7 +16,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package de.oweissbarth.slate.data;
+package de.oweissbarth.slate.support;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,6 +25,15 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Time;
+
+import de.oweissbarth.slate.data.Camera;
+import de.oweissbarth.slate.data.Equipment;
+import de.oweissbarth.slate.data.Lens;
+import de.oweissbarth.slate.data.Media;
+import de.oweissbarth.slate.data.Project;
+import de.oweissbarth.slate.data.Scene;
+import de.oweissbarth.slate.data.Shot;
+import de.oweissbarth.slate.data.Take;
 
 import android.app.Activity;
 import android.app.ActivityManager;

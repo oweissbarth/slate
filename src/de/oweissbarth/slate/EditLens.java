@@ -32,7 +32,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import de.oweissbarth.slate.data.Lens;
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class EditLens extends SherlockActivity {
 	private boolean newObject;

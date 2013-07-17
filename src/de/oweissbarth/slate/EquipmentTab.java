@@ -27,7 +27,7 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class EquipmentTab extends SherlockListFragment {
 	
@@ -98,5 +98,4 @@ public class EquipmentTab extends SherlockListFragment {
 			listItems();
 		}
 	}
-	
 }

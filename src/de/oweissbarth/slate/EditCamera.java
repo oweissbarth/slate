@@ -36,7 +36,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import de.oweissbarth.slate.data.Camera;
-import de.oweissbarth.slate.data.ProjectFile;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class EditCamera extends SherlockActivity implements OnItemClickListener{
 	private boolean[] availableFpsBool;
