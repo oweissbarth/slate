@@ -120,5 +120,10 @@ public class EditCamera extends SherlockActivity implements OnItemClickListener{
 		this.finish();
 		return true;
 	}
+	
+	protected void onStop(){
+		super.onStop();
+		ProjectFile.saveIfNecessary(this);
+	}
 
 }

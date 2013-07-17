@@ -34,6 +34,7 @@ import de.oweissbarth.slate.data.ProjectFile;
 
 public class IntroActivity extends SherlockActivity {
 	private int importClicked=0;
+	private ProgressDialog progress;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,11 +50,15 @@ public class IntroActivity extends SherlockActivity {
 		Spinner projects = (Spinner) findViewById(R.id.projectsSpinner);
 		projects.setAdapter(adapter);
 		
+		if(this.getIntent().getExtras()!= null && this.getIntent().getExtras().getBoolean("back", false))
+			ProjectFile.save(getApplicationContext());
+		
 	}
 
 	
 	protected void onRestart(){
 		super.onRestart();
+
 		Log.d("Intro", "IntroActivity restarted");
 		String[] availableFiles = ProjectFile.listProjects(getApplicationContext());
 		ArrayAdapter<String> adapter = null;
@@ -83,11 +88,11 @@ public class IntroActivity extends SherlockActivity {
 		Log.d("loadFile", "Project to load is: "+ projectName);
 		
 		
-		ProgressDialog progress = new ProgressDialog(this);
-		progress.setMessage("Loading file...");
-		progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-		progress.setIndeterminate(false);
-		MainActivity.loading = new LoadingFileTask(progress, this);
+		this.progress = new ProgressDialog(this);
+		this.progress.setMessage("Loading file...");
+		this.progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		this.progress.setIndeterminate(false);
+		MainActivity.loading = new LoadingFileTask(this.progress, this);
 		MainActivity.loading.execute(projectName);
 	}
 	
@@ -106,6 +111,14 @@ public class IntroActivity extends SherlockActivity {
 			this.importClicked++;
 		}
 	}
+	
+	protected void onDestroy(){
+		if(this.progress!=null){
+			this.progress.dismiss();
+			this.progress=null;
+		}
+	}
+
 	
 	
 

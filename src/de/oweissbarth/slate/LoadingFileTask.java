@@ -41,7 +41,7 @@ public class LoadingFileTask extends AsyncTask<String, Void, Void>{
 	}
 	public void onPostExecute(Void unused){
 		Intent loadProjectIntoMain = new Intent(this.context, MainActivity.class);
-		this.context.startActivity(loadProjectIntoMain);
 		progress.dismiss();
+		this.context.startActivity(loadProjectIntoMain);
 	}
 }

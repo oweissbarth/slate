@@ -140,5 +140,10 @@ public class EditMedia extends SherlockActivity implements OnItemSelectedListene
 		
 	}
 	
+	protected void onStop(){
+		super.onStop();
+		ProjectFile.saveIfNecessary(this);
+	}
+	
 
 }

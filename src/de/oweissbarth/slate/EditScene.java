@@ -99,6 +99,11 @@ public class EditScene extends SherlockActivity {
 		this.finish();
 		return true;
 	}
+	
+	protected void onStop(){
+		super.onStop();
+		ProjectFile.saveIfNecessary(this);
+	}
 
 
 

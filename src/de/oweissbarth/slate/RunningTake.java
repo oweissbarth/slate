@@ -18,6 +18,7 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
+import de.oweissbarth.slate.data.ProjectFile;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -30,6 +31,11 @@ public class RunningTake extends Activity {
 		setContentView(R.layout.activity_running_take);
 		  this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 				  
+	}
+	
+	protected void onStop(){
+		super.onStop();
+		ProjectFile.saveIfNecessary(this);
 	}
 
 

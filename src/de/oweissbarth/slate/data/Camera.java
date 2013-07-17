@@ -50,10 +50,16 @@ public class Camera{
 		}
 		
 		public String getXML(){
+			String fps ="";
+			for(int i=0; i<this.availableFps.length; i++){
+				fps+=i;
+				if((i+1)!=this.availableFps.length)
+					fps+=",";
+			}
 			String xml="<Camera>\n"+
 						"\t&cameraid:"+  this.id + "&\n"+
 						"\t&cameraname:" +this.name +"&\n"+
-						"\t&availableFps:" + this.availableFps.toString() + "&\n"+
+						"\t&availableFps:" + fps + "&\n"+
 						"</Camera>\n";
 			return xml;
 		}

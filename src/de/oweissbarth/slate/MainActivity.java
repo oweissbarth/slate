@@ -18,6 +18,8 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,9 +73,7 @@ public class MainActivity extends SherlockFragmentActivity {
 
 	
 	public void save(){
-		ProjectFile.save(ProjectFile.project, getApplicationContext());
-		Toast savedNotification = Toast.makeText(getApplicationContext(), "saved File", Toast.LENGTH_SHORT);
-		savedNotification.show();
+		ProjectFile.save(getApplicationContext());
 	}
 	
 	public void onBackPressed(){
@@ -88,6 +88,10 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	protected void onStop(){
 		super.onStop();
-		save();
+		ProjectFile.saveIfNecessary(this);
 	}
+	
+
+	
+	
 }

@@ -130,5 +130,10 @@ public class EditLens extends SherlockActivity {
 			((EditText)findViewById(R.id.minFocalLengthValue)).setHint("minimal focal length");
 		}
 	}
+	
+	protected void onStop(){
+		super.onStop();
+		ProjectFile.saveIfNecessary(this);
+	}
 
 }

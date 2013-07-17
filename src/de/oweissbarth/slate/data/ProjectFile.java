@@ -26,9 +26,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Time;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 public class ProjectFile {
 	public static  Project project;
@@ -58,7 +61,17 @@ public class ProjectFile {
 		}return files;
 	}
 	
-	public static boolean save(Project project, Context context){
+	public static void saveIfNecessary(Context context){
+		ActivityManager am = (ActivityManager)context.getSystemService(Activity.ACTIVITY_SERVICE);
+		String classname = am.getRunningTasks(1).get(0).topActivity.getClassName();
+		Log.d("Save if necessary", "Active Class now is : " + classname);
+		if(!(classname.contains("de.oweissbarth.slate")))
+			save(context);
+	}
+	
+	public static boolean save(Context context){
+		Project project = ProjectFile.project;
+		
 		File dir = (context.getExternalFilesDir(null));
 	    File file = new File(dir, project.getName() + ".slate");
 	    if (file.exists ()) {
@@ -84,6 +97,8 @@ public class ProjectFile {
 	    	Log.d("File", "Error while writing File");
 	    	return false;
 	    }
+	    Toast savedNotification = Toast.makeText(context, "saved File", Toast.LENGTH_SHORT);
+		savedNotification.show();
 	    return true;
 	}
 	
@@ -137,27 +152,27 @@ public class ProjectFile {
 		
 		Log.d("Parsing", "Start Finite State Maschine with number of Token: " + t.length);
 		for(int i=0; (i< t.length)&&(valid); i++){
-			//Log.d("Parsing", "Parsing at i =" + i);
+			Log.d("Parsing", "Parsing at state =" + state + "with token " + t[i].getId());
 			progress.incrementProgressBy(1);
 			switch(state){
 				case 1:		if(t[i].getId()==1){
 								state=2;
 								project = new Project();
 							}else{
-								valid=false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid=false;reportError(state, t[i].getId());
 							}break;
 				case 2:		if(t[i].getId()==101){
 							project.setName(t[i].getValue());
 							state=3;
 							}else{
-								valid=false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid=false;reportError(state, t[i].getId());
 							}break;
 				
 				case 3:		if(t[i].getId()==102){
 								project.setDirector(t[i].getValue());
 								state=4;
 							}else{
-								valid=false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid=false;reportError(state, t[i].getId());
 							}break;
 				
 				case 4:		if(t[i].getId()==2){
@@ -202,7 +217,7 @@ public class ProjectFile {
 								scene.setExt(Boolean.parseBoolean(t[i].getValue()));
 								state=10;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 10:	if(t[i].getId()==7){
@@ -248,7 +263,7 @@ public class ProjectFile {
 								shot.setFocalLength(Integer.parseInt(t[i].getValue()));
 								state=16;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 16:	if(t[i].getId()==305){ 
@@ -286,7 +301,7 @@ public class ProjectFile {
 								take.setDuration(Time.valueOf(t[i].getValue()));
 								state=21;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 21:	if(t[i].getId()==403){
@@ -300,7 +315,7 @@ public class ProjectFile {
 								take.setComment(t[i].getValue());
 								state=23;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 23:	if(t[i].getId()==405){
@@ -337,7 +352,7 @@ public class ProjectFile {
 							}else if(t[i].getId()==10){
 								state=31;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 31:	if(t[i].getId()==6){
@@ -346,7 +361,7 @@ public class ProjectFile {
 								scene = project.addScene();
 								state=6;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 32:	if(t[i].getId()==501){
@@ -366,8 +381,9 @@ public class ProjectFile {
 				case 34:	if(t[i].getId()==503){
 								String[] array = t[i].getValue().split(",");
 								int[] fps= new int[array.length];
-								for(int x=0; x < array.length; i++){
+								for(int x=0; x < array.length; x++){
 									fps[x] = Integer.parseInt(array[x]);
+									Log.d("Parsing", "Found fps " + fps[x] + "at array position " +x);
 								}
 								camera.setAvailableFps(fps);
 								state= 35;
@@ -393,7 +409,7 @@ public class ProjectFile {
 							}else if(t[i].getId()== 10){
 								state=31;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 37:	if(t[i].getId()==701){
@@ -407,7 +423,7 @@ public class ProjectFile {
 								media.setName(t[i].getValue());
 								state=39;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 39:	if(t[i].getId()==703){
@@ -415,7 +431,7 @@ public class ProjectFile {
 								media.setStorageFormat(Integer.parseInt(t[i].getValue().split(",")[1]));
 								state=40;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 40:	if(t[i].getId()==704){
@@ -443,7 +459,7 @@ public class ProjectFile {
 							}else if(t[i].getId()== 10){
 								state=31;
 							}else{
-								valid= false;reportError(state, t[i].getId());reportError(state, t[i].getId());
+								valid= false;reportError(state, t[i].getId());
 							}break;
 				
 				case 43:	if(t[i].getId()==601){

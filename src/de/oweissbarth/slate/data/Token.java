@@ -197,7 +197,7 @@ final class Token {
 			return 405;
 		
 		//CAMERA
-		if(identifier.equals("cameraID"))
+		if(identifier.equals("cameraid"))
 			return 501;
 		if(identifier.equals("cameraname"))
 			return 502;
@@ -228,6 +228,7 @@ final class Token {
 		if(identifier.equals("type"))
 			return 704;
 		
+		Log.d("Token", "Couldn't find Token for " + identifier);
 		return -1;
 	}
 }

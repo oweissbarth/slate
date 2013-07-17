@@ -63,7 +63,7 @@ public class NewProject extends SherlockActivity {
 		project.setName( ProjectNameField.getText().toString());
 		project.setDirector(ProjectDirectorField.getText().toString());
 		
-		ProjectFile.save(project, getApplicationContext());
+		ProjectFile.save(getApplicationContext());
 		
 		Intent openMainView = new Intent(this, MainActivity.class);
 		openMainView.putExtra("projectName", projectName);

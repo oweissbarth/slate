@@ -135,6 +135,7 @@ public class ProjectTab extends SherlockListFragment {
 		if(level == 0){
 			Log.d("Project", "Back from upper level");
 			Intent i = new Intent(getActivity(), IntroActivity.class);
+			i.putExtra("back", true);
 			startActivity(i);
 			getActivity().finish();
 		}else{

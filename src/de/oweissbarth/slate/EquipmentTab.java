@@ -89,6 +89,7 @@ public class EquipmentTab extends SherlockListFragment {
 		if(category == -1){
 			Log.d("Equipment", "Back from upper level");
 			Intent i = new Intent(getActivity(), IntroActivity.class);
+			i.putExtra("back", true);
 			startActivity(i);
 			getActivity().finish();
 		}else{
@@ -97,4 +98,5 @@ public class EquipmentTab extends SherlockListFragment {
 			listItems();
 		}
 	}
+	
 }
