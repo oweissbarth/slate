@@ -1,3 +1,21 @@
+/*******************************************************************************
+ * Copyright 2013 Oliver Weissbarth
+ * 
+ * This file is part of Slate.
+ * 
+ *     Slate is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ * 
+ *      Slate is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ * 
+ *     You should have received a copy of the GNU General Public License
+ *     along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
+ ******************************************************************************/
 package de.oweissbarth.slate;
 
 import android.content.Intent;
@@ -9,14 +27,12 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-import de.oweissbarth.slate.data.Equipment;
 import de.oweissbarth.slate.data.Media;
 import de.oweissbarth.slate.data.ProjectFile;
 
@@ -30,6 +46,7 @@ public class EditMedia extends SherlockActivity implements OnItemSelectedListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_media);
 		this.storageFormat = (Spinner) findViewById(R.id.storageFormat);
+		((Spinner) findViewById(R.id.storageType)).setOnItemSelectedListener(this);
 		checkIfNew();
 	}
 	
@@ -63,6 +80,7 @@ public class EditMedia extends SherlockActivity implements OnItemSelectedListene
 			((EditText) findViewById(R.id.mediaName)).setText("");
 			((Spinner) findViewById(R.id.storageType)).setSelection(0);
 			((EditText) findViewById(R.id.storageSize)).setText("");
+			chooseFormat(this.storageFormat, 0);
 			((Spinner) findViewById(R.id.storageFormat)).setSelection(0);
 		}
 	}
