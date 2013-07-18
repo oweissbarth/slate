@@ -25,6 +25,8 @@ public class Shot{
 		private Lens lens;
 		private int fps;
 		private int focalLength;
+		private short view;
+		private short type;
 		private Camera camera;
 
 		private LinkedList<Take> takes = new LinkedList<Take>();
@@ -41,6 +43,10 @@ public class Shot{
 		 **************************************************/
 		public int getFps(){
 			return this.fps;
+		}
+		
+		public char getID(){
+			return this.id;
 		}
 		
 		public int getFocalLength(){

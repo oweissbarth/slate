@@ -20,7 +20,6 @@ package de.oweissbarth.slate;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,11 +29,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -50,15 +46,17 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 	
 	private int shot;
 	
-	private String[] items;
+	private Object[] items;
+	
+	private Button footer;
 		
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
 		MainActivity.projectFragment= this;
-		Button footer = new Button(getActivity());
-		footer.setText("Add Scene");
-		footer.setOnClickListener(this);
-		getListView().addFooterView(footer);
+		this.footer = new Button(getActivity());
+		this.footer.setText("Add Scene");
+		this.footer.setOnClickListener(this);
+		getListView().addFooterView(this.footer);
 		this.listItems();
 	}
 		
@@ -86,13 +84,15 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 	}
 	
 	private void listItems(){	
-
+		
 		switch(this.level){
-		case 0:  	setListAdapter(new SceneListAdapter(this.getActivity(), ProjectFile.project.getScenes()));break;
-		case 1:	  	items = ProjectFile.project.getSceneById(scene).getShotList();break;
-		case 2:		items = ProjectFile.project.getSceneById(scene).getShotById(shot).getTakeList();break;
+		case 0:  	items =	ProjectFile.project.getScenes();this.footer.setText("Add Scene");break;
+		case 1:	  	items = ProjectFile.project.getSceneById(scene).getShots();this.footer.setText("Add Shot");break;
+		case 2:		items = ProjectFile.project.getSceneById(scene).getShotById(shot).getTakes();this.footer.setText("Add Take");break;
 		default:	items = null;break;
 		}
+		setListAdapter(new SceneListAdapter(this.getActivity(), items, this.level));
+		
 		registerForContextMenu(getListView());
 	}
 	
@@ -102,6 +102,7 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 		Intent intent = new Intent(getActivity(), editActivity);
 		intent.putExtra("newObject", true);
 		startActivity(intent);
+		
 	}
 	
 	public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo){
@@ -135,13 +136,7 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 										startActivity(intent);
 										return true;
 			
-			case R.id.delete_item:		/*Builder confirmation = new AlertDialog.Builder(getActivity());
-										confirmation.setMessage("Do you really want to delete this? I warned you, so don't blame me later");
-										confirmation.setCancelable(true);
-										confirmation.setPositiveButton("Confirm", this);
-										confirmation.setNegativeButton("Cancel", this);
-										AlertDialog dialog = confirmation.create();*/
-										ProjectFile.project.deleteScene(listItem);
+			case R.id.delete_item:		ProjectFile.project.deleteScene(listItem);
 										listItems();
 										return true;
 										

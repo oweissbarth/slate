@@ -18,19 +18,16 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
-import com.actionbarsherlock.app.ActionBar.Tab;
 
 import de.oweissbarth.slate.support.ProjectFile;
 

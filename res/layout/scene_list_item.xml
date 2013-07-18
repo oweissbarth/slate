@@ -8,28 +8,28 @@
     >
 
     <TextView
-        android:id="@+id/sceneName"
+        android:id="@+id/listItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@+id/sceneNumber"
+        android:layout_toRightOf="@+id/listItemId"
         android:text="Scene name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/intExt"
+        android:id="@+id/listItemDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/sceneName"
+        android:layout_alignLeft="@+id/listItemName"
         android:layout_alignParentBottom="true"
         android:text="ext"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/sceneNumber"
+        android:id="@+id/listItemId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -39,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/numberOfShots"
+        android:id="@+id/listItemSubcategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
