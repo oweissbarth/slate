@@ -25,8 +25,8 @@ public class Shot{
 		private Lens lens;
 		private int fps;
 		private int focalLength;
-		private short view;
-		private short type;
+		private short fieldSize;
+		private short cameraMotion;
 		private Camera camera;
 
 		private LinkedList<Take> takes = new LinkedList<Take>();
@@ -61,6 +61,14 @@ public class Shot{
 			return this.lens;
 		}
 		
+		public short getFieldSize(){
+			return this.fieldSize;
+		}
+
+		public short getCameraMotion(){
+			return this.cameraMotion;
+		}
+		
 		public Take[] getTakes(){
 			int size = takes.size();
 			return takes.toArray(new Take[size]);
@@ -72,7 +80,9 @@ public class Shot{
 							"\t&fps:" + this.fps + "&\n"+
 							"\t&focalLength:" + this.focalLength + "&\n"+
 							"\t&camera:" + this.camera.getId() + "&\n" +
-							"\t&lens:" + this.lens.getId() + "&\n";
+							"\t&lens:" + this.lens.getId() + "&\n"+
+							"\t&fieldSize:"+ this.fieldSize + "&\n"+
+							"\t&cameraMotion:"+ this.cameraMotion + "&\n";
 			if(takes != null)
 			for(Take take : takes){
 				xml += take.getXML();
@@ -123,6 +133,14 @@ public class Shot{
 		
 		public void setFocalLength(int focalLength){
 			this.focalLength= focalLength;
+		}
+		
+		public void setFieldSize(short fieldSize){
+			this.fieldSize= fieldSize;
+		}
+		
+		public void setCameraMotion(short cameraMotion){
+			this.cameraMotion=cameraMotion;
 		}
 }
 

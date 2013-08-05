@@ -290,7 +290,21 @@ public class ProjectFile {
 								valid=false;reportError(state, t[i].getId());
 							}break;
 				
-				case 305:	if(t[i].getId()==8){
+				case 305:	if(t[i].getId()==306){
+								shot.setFieldSize(Short.parseShort(t[i].getValue()));
+								state=306;
+							}else{
+								valid=false;reportError(state, t[i].getId());
+							}
+							
+				case 306:	if(t[i].getId()==307){
+								shot.setCameraMotion(Short.parseShort(t[i].getValue()));
+								state=307;
+							}else{
+								valid=false;reportError(state, t[i].getId());
+							}
+					
+				case 307:	if(t[i].getId()==8){
 								state=8;
 							}else if(t[i].getId()==4){
 								take=shot.addTake();
@@ -511,15 +525,15 @@ public class ProjectFile {
 				
 				case 16:	if(t[i].getId()==11){
 								camera = equipment.addCamera();
-								state=32;
+								state=11;
 							}else if(t[i].getId()==12){
 								lens = equipment.addLens();
-								state=43;
+								state=12;
 							}else if(t[i].getId()==13){
 								media= equipment.addMedia();
-								state=37;
+								state=13;
 							}else if(t[i].getId()== 10){
-								state=31;
+								state=10;
 							}else{
 								valid= false;reportError(state, t[i].getId());
 							}break;

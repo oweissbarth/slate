@@ -104,9 +104,33 @@
          <item>240</item>
          <item>320</item>
     </string-array>
+    
+     <string-array name="fieldSize">
+         <item>extreme long</item>
+         <item>long</item>
+         <item>medium long</item>
+         <item>full</item>
+         <item>medium</item>
+         <item>close-up</item>
+         <item>extreme close-up</item>
+     </string-array>
+     
+     <string-array name="cameraMotion">
+         <item>pan</item>
+         <item>tilt</item>
+         <item>dolly</item>
+         <item>zoom</item>
+         <item>crane</item>
+         <item>steadycam</item>
+         
+     </string-array>
         
         <string name="lens">Lens</string>
         <string name="milimeter">mm</string>
         <string name="available_fps">Available Fps:</string>
+        <string name="camera">Camera</string>
+        <string name="fieldSize">Field Size</string>
+        <string name="cameraMotion">Camera Motion</string>
+        <string name="fps">fps</string>
 
 </resources>

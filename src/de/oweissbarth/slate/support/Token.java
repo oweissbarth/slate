@@ -183,6 +183,10 @@ final class Token {
 			return 304;
 		if(identifier.equals("camera"))
 			return 305;
+		if(identifier.equals("fieldSize"))
+			return 306;
+		if(identifier.equals("cameraMotion"))
+			return 307;
 		
 		//TAKE
 		if(identifier.equals("takeid"))
@@ -211,7 +215,7 @@ final class Token {
 			return 602;
 		if(identifier.equals("fixed"))
 			return 603;
-		if(identifier.equals("lensfocalLength"))
+		if(identifier.equals("lensFocalLength"))
 			return 604;
 		if(identifier.equals("minFocalLength"))
 			return 605;

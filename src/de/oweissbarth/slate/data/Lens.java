@@ -66,15 +66,22 @@ public class Lens{
 			return this.name;
 		}
 		
+		public String toString(){
+			if(this.fixed)
+				return this.name + "\t" + this.minFocalLength +" mm";
+			else
+				return this.name + "\t" +this.minFocalLength +" - " + this.maxFocalLength + " mm";
+		}
+		
 		public String getXML(){
 			String xml="<Lens>\n"+
 						"\t&lensid:" + this.id +"&\n"+
 						"\t&lensname:" + this.name +"&\n"+
 						"\t&fixed:"+	this.fixed +"&\n"+
-						"\t&focalLength:" + this.focalLength +"&\n"+
-						"\t&minfocalLength:" + this.minFocalLength +"&\n"+
-						"\t&maxfocalLength:" + this.maxFocalLength +"&\n"+
-						"<Lens>";
+						"\t&lensFocalLength:" + this.focalLength +"&\n"+
+						"\t&minFocalLength:" + this.minFocalLength +"&\n"+
+						"\t&maxFocalLength:" + this.maxFocalLength +"&\n"+
+						"</Lens>\n";
 			return xml;
 		}
 		

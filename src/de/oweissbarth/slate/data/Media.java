@@ -57,12 +57,12 @@ public class Media{
 	}
 	
 	public String getXML(){
-		String xml="<Media>" + 
+		String xml="<Media>\n" + 
 					"\t&mediaid:"+ this.id + "&\n"+
 					"\t&medianame:"+ this.name + "&\n"+
 					"\t&storage:" + this.storage + "," + this.storageFormat+"&\n"+
 					"\t&type:" + this.type + "&\n"+
-					"</Media>";
+					"</Media>\n";
 		return xml;
 	}
 	

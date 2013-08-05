@@ -105,6 +105,11 @@ public class Project{
 	public void deleteScene(int id){
 		this.numberOfScenes--;
 		scenes.remove(id);
+		this.numberOfScenes=0;
+		for(Scene scene: this.scenes){
+			this.numberOfScenes++;
+			scene.setId(this.numberOfScenes);
+		}
 	}
 	
 	public Equipment addEquipment(){
