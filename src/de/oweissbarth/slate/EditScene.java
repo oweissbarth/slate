@@ -43,7 +43,7 @@ public class EditScene extends SherlockActivity {
 		setContentView(R.layout.activity_edit_scene);
 		checkIfNew();
 		
-		scene = getIntent().getExtras().getInt("scene");
+		this.scene = getIntent().getExtras().getInt("scene");
 	}
 	
 	public boolean onCreateOptionsMenu(Menu menu){

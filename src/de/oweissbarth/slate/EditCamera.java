@@ -55,6 +55,7 @@ public class EditCamera extends SherlockActivity implements OnItemClickListener{
 		list.setAdapter(adpater);
 		list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		list.setOnItemClickListener(this);
+		list.requestFocus();
 		checkIfNew();
 	}
 	
@@ -71,7 +72,9 @@ public class EditCamera extends SherlockActivity implements OnItemClickListener{
 		if(!this.newObject){
 			this.camera = i.getExtras().getInt("id");
 			((EditText)findViewById(R.id.cameraName)).setText(ProjectFile.project.getEquipment().getCameraById(this.camera).getName());
-			
+			ListView list = (ListView)findViewById(R.id.fpsList);
+			for(int index: ProjectFile.project.getEquipment().getCameraById(this.camera).getAvailableFps())
+				list.setItemChecked(index, true);
 		}
 	}
 	
@@ -90,13 +93,7 @@ public class EditCamera extends SherlockActivity implements OnItemClickListener{
 	}
 	
 	public boolean done(MenuItem item){
-		Camera camera;
-		if(!this.newObject){
-			camera = ProjectFile.project.getEquipment().getCameraById(this.camera);
-		}else{
-			camera = ProjectFile.project.getEquipment().addCamera();
-		}
-		
+		Camera camera = newObject? ProjectFile.project.getEquipment().addCamera() : ProjectFile.project.getEquipment().getCameraById(this.camera);
 		
 		String name = ((EditText)findViewById(R.id.cameraName)).getText().toString();
 		camera.setName(name);

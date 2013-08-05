@@ -23,16 +23,16 @@ import android.util.Log;
 
 public class Equipment{
 	private LinkedList<Camera> cameras = new LinkedList<Camera>();
-	private int numberOfCameras;
+	private int currentCameraIndex;
 	private LinkedList<Lens> lenses = new LinkedList<Lens>();
-	private int numberOfLenses;
+	private int currentLensIndex;
 	private LinkedList<Media> media = new LinkedList<Media>();
-	private int numberOfMedia;
+	private int currentMediaIndex;
 
 	public Equipment(){
-		this.numberOfCameras=0;
-		this.numberOfLenses=0;
-		this.numberOfMedia=0;
+		this.currentCameraIndex=-1;
+		this.currentLensIndex=-1;
+		this.currentMediaIndex=-1;
 	}
 
 	/*************************************************
@@ -72,37 +72,34 @@ public class Equipment{
 	
 	public String[] getCameraList(){
 		Log.d("ListCameras", cameras.toString() );
-		String[] cameraList= new String[cameras.size()+1];
+		String[] cameraList= new String[cameras.size()];
 		int i=0;
 		for(Camera camera: cameras){
 			cameraList[i]=camera.toString();
 			i++;
 		}
-		cameraList[i]="Add Camera";
 		return cameraList;
 	
 	}
 	
 	public String[] getLensList(){
-		String[] lensList= new String[lenses.size()+1];
+		String[] lensList= new String[lenses.size()];
 		int i=0;
 		for(Lens lens: lenses){
 			lensList[i]=lens.toString();
 			i++;
 		}
-		lensList[i]="Add Lens";
 		return lensList;
 	
 	}
 	
 	public String[] getMediaList(){
-		String[] mediaList= new String[media.size()+1];
+		String[] mediaList= new String[media.size()];
 		int i=0;
 		for(Media medium: media){
 			mediaList[i]=medium.toString();
 			i++;
 		}
-		mediaList[i]="Add Media";
 		return mediaList;
 	
 	}
@@ -127,34 +124,34 @@ public class Equipment{
 	*************************************************/
 
 	public void addLens(Lens lens){
-		numberOfLenses++;
+		currentLensIndex++;
 		this.lenses.add(lens);
 	}
 	public Lens addLens(){
-		numberOfLenses++;
-		Lens lens = new Lens(numberOfLenses);
+		currentLensIndex++;
+		Lens lens = new Lens(currentLensIndex);
 		this.lenses.add(lens);
 		return lens;
 	}
 
 	public void addCamera(Camera camera){
-		numberOfCameras++;
+		currentCameraIndex++;
 		this.cameras.add(camera);
 	}
 	public Camera addCamera(){
-		numberOfCameras++;
-		Camera camera = new Camera(numberOfCameras);
+		currentCameraIndex++;
+		Camera camera = new Camera(currentCameraIndex);
 		this.cameras.add(camera);
 		return camera;
 	}
 
 	public void addMedia(Media media){
-		numberOfMedia++;
+		currentMediaIndex++;
 		this.media.add(media);
 	}
 	public Media addMedia(){
-		numberOfMedia++;
-		Media media = new Media(numberOfMedia);
+		currentMediaIndex++;
+		Media media = new Media(currentMediaIndex);
 		this.media.add(media);
 		return media;
 	}

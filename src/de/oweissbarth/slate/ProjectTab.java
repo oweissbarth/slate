@@ -62,14 +62,7 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 		
 	public void onListItemClick(ListView parent, View view, int position, long id){ 
 		Log.d("CLICK", "id = "+ id + ", pos="+ position);
-		int listLength = this.items.length;
 
-		if((id+1) == listLength){
-			Class editActivity = chooseEditActivity();
-			Intent intent = new Intent(getActivity(), editActivity);
-			intent.putExtra("newObject", true);
-			startActivity(intent);
-		}else{
 			switch(this.level){
 				case 0:		this.level++;
 							this.scene = (int)id;
@@ -80,7 +73,6 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 							break;
 			}
 		listItems();
-		}
 	}
 	
 	private void listItems(){	

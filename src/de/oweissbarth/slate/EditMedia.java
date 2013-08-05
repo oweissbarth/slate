@@ -47,6 +47,7 @@ public class EditMedia extends SherlockActivity implements OnItemSelectedListene
 		setContentView(R.layout.activity_edit_media);
 		this.storageFormat = (Spinner) findViewById(R.id.storageFormat);
 		((Spinner) findViewById(R.id.storageType)).setOnItemSelectedListener(this);
+		this.media = getIntent().getExtras().getInt("id");
 		checkIfNew();
 	}
 	

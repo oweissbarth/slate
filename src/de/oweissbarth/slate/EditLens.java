@@ -67,13 +67,14 @@ public class EditLens extends SherlockActivity {
 		if(!newObject){
 			Log.d("EDITOR", "Existing Lens");
 			this.lens=i.getExtras().getInt("id");
+			Log.d("Edit Lens", "ID = " +this.lens);
 			this.fixed = ProjectFile.project.getEquipment().getLensById(lens).getFixed();
 			((EditText) findViewById(R.id.lensName)).setText(ProjectFile.project.getEquipment().getLensById(lens).getName());
 			((ToggleButton) findViewById(R.id.focusType)).setChecked(ProjectFile.project.getEquipment().getLensById(lens).getFixed());
 			((EditText) findViewById(R.id.minFocalLengthValue)).setText(String.valueOf(ProjectFile.project.getEquipment().getLensById(lens).getMinFocalLength()));
 			if(!fixed){
-			((LinearLayout)findViewById(R.id.maxFocalLength)).setVisibility(View.GONE);
-			((EditText) findViewById(R.id.maxFocalLengthValue)).setText(String.valueOf(ProjectFile.project.addEquipment().getLensById(lens).getMaxFocalLength()));
+			((LinearLayout)findViewById(R.id.maxFocalLength)).setVisibility(View.VISIBLE);
+			((EditText) findViewById(R.id.maxFocalLengthValue)).setText(String.valueOf(ProjectFile.project.getEquipment().getLensById(lens).getMaxFocalLength()));
 			}
 		}else{
 			((EditText) findViewById(R.id.lensName)).setText("");
