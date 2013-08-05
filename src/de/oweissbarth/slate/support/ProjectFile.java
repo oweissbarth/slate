@@ -295,20 +295,29 @@ public class ProjectFile {
 								state=306;
 							}else{
 								valid=false;reportError(state, t[i].getId());
-							}
+							}break;
 							
 				case 306:	if(t[i].getId()==307){
 								shot.setCameraMotion(Short.parseShort(t[i].getValue()));
 								state=307;
 							}else{
 								valid=false;reportError(state, t[i].getId());
-							}
+							}break;
 					
 				case 307:	if(t[i].getId()==8){
 								state=8;
 							}else if(t[i].getId()==4){
 								take=shot.addTake();
 								state=4;
+							}else{
+								valid=false;reportError(state, t[i].getId());
+							}break;
+				
+				case 8:		if(t[i].getId()==3){
+								shot = scene.addShot();
+								state = 3;
+							}else if(t[i].getId()==7){
+								state=7;
 							}else{
 								valid=false;reportError(state, t[i].getId());
 							}break;

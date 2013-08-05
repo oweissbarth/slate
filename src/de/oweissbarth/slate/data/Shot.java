@@ -77,10 +77,10 @@ public class Shot{
 		public String getXML(){
 			String xml = "<Shot>\n" + 
 							"\t&shotid:"+this.id +"&\n"+
+							"\t&lens:" + this.lens.getId() + "&\n"+
 							"\t&fps:" + this.fps + "&\n"+
 							"\t&focalLength:" + this.focalLength + "&\n"+
 							"\t&camera:" + this.camera.getId() + "&\n" +
-							"\t&lens:" + this.lens.getId() + "&\n"+
 							"\t&fieldSize:"+ this.fieldSize + "&\n"+
 							"\t&cameraMotion:"+ this.cameraMotion + "&\n";
 			if(takes != null)

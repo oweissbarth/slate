@@ -153,6 +153,7 @@ public class EditShot extends SherlockActivity implements OnSeekBarChangeListene
 		shot.setLens(lens);
 		shot.setFocalLength(focalLength);
 		
+		this.finish();
 		return true;
 	}
 	
