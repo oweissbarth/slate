@@ -33,6 +33,9 @@ public class Take{
 	/**************************************************
 						Getter
 	**************************************************/
+	public int getID(){
+		return this.id;
+	}
 	
 	public Time getDuration(){
 		return this.duration;

@@ -114,6 +114,7 @@ public class IntroActivity extends SherlockActivity {
 	}
 	
 	protected void onDestroy(){
+		super.onDestroy();
 		if(this.progress!=null){
 			this.progress.dismiss();
 			this.progress=null;

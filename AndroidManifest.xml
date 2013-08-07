@@ -20,7 +20,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.oweissbarth.slate"
     android:installLocation="auto"
-    android:versionCode="1"
+    android:versionCode="10"
     android:versionName="0.10" >
 
     <uses-sdk
@@ -29,7 +29,8 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:allowBackup="true"
@@ -86,8 +87,12 @@
             android:label="@string/title_activity_edit_media" >
         </activity>
         <activity
-            android:name="de.oweissbarth.slate.RunningTake"
+            android:name="de.oweissbarth.slate.TakeShowInfo"
             android:label="@string/title_activity_running_take" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.TakeWaiting"
+            android:label="@string/title_activity_take_waiting" >
         </activity>
     </application>
 

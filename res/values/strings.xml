@@ -50,8 +50,8 @@
     <string name="shot">Shot</string>
     <string name="title_activity_running_take">RunningTake</string>
     <string name="media">Media</string>
-    
-     <string-array name="mediaType">
+
+    <string-array name="mediaType">
         <item>SD-Card</item>
         <item>mini-SD-Card</item>
         <item>micro-SD-Card</item>
@@ -68,69 +68,66 @@
         <item>DV</item>
         <item>MiniDV</item>
     </string-array>
-    
-     <string-array name="storageFormatByte">
+    <string-array name="storageFormatByte">
         <item>Tb</item>
         <item>Gb</item>
         <item>Mb</item>
         <item>Kb</item>
         <item>b</item>
     </string-array>
-    
-     <string-array name="storageFormatFilm">
+    <string-array name="storageFormatFilm">
         <item>m</item>
         <item>ft</item>
     </string-array>
-    
-     <string-array name="storageFormatTime">
+    <string-array name="storageFormatTime">
         <item>min</item>
         <item>h</item>
     </string-array>
-    
-     <string-array name="fps">
-         <item>12</item>
-         <item>16</item>
-         <item>23.98</item>
-         <item>24</item>
-         <item>25</item>
-         <item>29.97</item>
-         <item>30</item>
-         <item>47.96</item>
-         <item>48</item>
-         <item>50</item>
-         <item>59.94</item>
-         <item>60</item>
-         <item>120</item>
-         <item>240</item>
-         <item>320</item>
+    <string-array name="fps">
+        <item>12</item>
+        <item>16</item>
+        <item>23.98</item>
+        <item>24</item>
+        <item>25</item>
+        <item>29.97</item>
+        <item>30</item>
+        <item>47.96</item>
+        <item>48</item>
+        <item>50</item>
+        <item>59.94</item>
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+        <item>320</item>
     </string-array>
-    
-     <string-array name="fieldSize">
-         <item>extreme long</item>
-         <item>long</item>
-         <item>medium long</item>
-         <item>full</item>
-         <item>medium</item>
-         <item>close-up</item>
-         <item>extreme close-up</item>
-     </string-array>
-     
-     <string-array name="cameraMotion">
-         <item>pan</item>
-         <item>tilt</item>
-         <item>dolly</item>
-         <item>zoom</item>
-         <item>crane</item>
-         <item>steadycam</item>
-         
-     </string-array>
-        
-        <string name="lens">Lens</string>
-        <string name="milimeter">mm</string>
-        <string name="available_fps">Available Fps:</string>
-        <string name="camera">Camera</string>
-        <string name="fieldSize">Field Size</string>
-        <string name="cameraMotion">Camera Motion</string>
-        <string name="fps">fps</string>
+    <string-array name="fieldSize">
+        <item>extreme long</item>
+        <item>long</item>
+        <item>medium long</item>
+        <item>full</item>
+        <item>medium</item>
+        <item>close-up</item>
+        <item>extreme close-up</item>
+    </string-array>
+    <string-array name="cameraMotion">
+        <item>pan</item>
+        <item>tilt</item>
+        <item>dolly</item>
+        <item>zoom</item>
+        <item>crane</item>
+        <item>steadycam</item>
+    </string-array>
+
+    <string name="lens">Lens</string>
+    <string name="milimeter">mm</string>
+    <string name="available_fps">Available Fps:</string>
+    <string name="camera">Camera</string>
+    <string name="fieldSize">Field Size</string>
+    <string name="cameraMotion">Camera Motion</string>
+    <string name="fps">fps</string>
+    <string name="take">Take</string>
+    <string name="title_activity_take_waiting">Waiting for Clapperboard</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

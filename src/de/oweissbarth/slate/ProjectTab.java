@@ -144,6 +144,7 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 		switch(this.level){
 			case 0: 	return EditScene.class;
 			case 1:		return EditShot.class;
+			case 2:		return TakeShowInfo.class;
 			default:	return null;
 		}
 	}

@@ -92,7 +92,8 @@ public class ProjectFile {
 	    try{
 	    FileOutputStream out = new FileOutputStream(file);
 	    Log.d("File", "Opened Stream \n Generating XML...");
-	    String xml = "---&slate-ver0001&---\n" + project.getXML();
+	    String version = String.format("%04d", context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode); 
+	    String xml = "---&slate-ver"+version+"&---\n" + project.getXML();
 	    for(int i = 0; i<xml.length(); i++){
 			Log.d("Parsing", i+" :"+xml.charAt(i));
 		}
