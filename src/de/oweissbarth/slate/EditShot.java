@@ -25,25 +25,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.ProgressBar;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
-
 import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import de.oweissbarth.slate.data.Camera;
 import de.oweissbarth.slate.data.Lens;
-import de.oweissbarth.slate.data.Scene;
 import de.oweissbarth.slate.data.Shot;
 import de.oweissbarth.slate.support.ProjectFile;
 

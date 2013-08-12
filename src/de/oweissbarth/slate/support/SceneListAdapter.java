@@ -88,12 +88,11 @@ public class SceneListAdapter extends BaseAdapter {
 						itemSubcategory.setText(shot.getTakes().length + "Takes");
 						break;
 						
-			case 2:		/*Take take =(Take)item;
+			case 2:		Take take =(Take)item;
 						itemId.setText(String.valueOf(take.getID()));
-						itemName.setText(scene.getName());
-						String ext = scene.getExt() ? "Ext" : "Int";
-						itemDetails.setText(extText);
-						itemSubcategory.setText(scene.getShots().length+" shots");*/
+						itemName.setText(String.valueOf(take.getUsabale()));
+						itemDetails.setText(take.getComment());
+						itemSubcategory.setText(take.getDuration()+"s");
 						break;
 		}
 		

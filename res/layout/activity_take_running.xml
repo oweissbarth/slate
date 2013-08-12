@@ -19,10 +19,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayout1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+     >
 
     <TextView
-        android:id="@+id/minFocalLengthValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -32,12 +32,24 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Chronometer
-        android:id="@+id/chronometer1"
+        android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:format="%s"
         android:text="Chronometer"
-        android:format="" />
+        android:textSize="96sp" />
+
+    <Button
+        android:id="@+id/take_running_cut"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="25dp"
+        android:onClick="onCut"
+        android:text="Cut!" />
 
 </RelativeLayout>

@@ -18,9 +18,9 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
+import android.app.FragmentTransaction;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -29,6 +29,7 @@ import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 
+
 import de.oweissbarth.slate.support.ProjectFile;
 
 public class MainActivity extends SherlockFragmentActivity implements TabListener{
@@ -36,6 +37,8 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	public static AsyncTask<String, Void, Void> loading;
 	public static SherlockListFragment projectFragment;
 	public static SherlockListFragment equipmentFragment;
+	ProjectTab pTab;
+	EquipmentTab eTab;
 
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -90,28 +93,45 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		super.onStop();
 		ProjectFile.saveIfNecessary(this);
 	}
-	
-	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		if (tab.getPosition()==0){
-			ProjectTab frag = new ProjectTab();
-			ft.replace(android.R.id.content, frag);
-		}else if(tab.getPosition()==1){
-			EquipmentTab frag = new EquipmentTab();
-			ft.replace(android.R.id.content, frag);
-		}
-	}
 
 	@Override
-	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-	
+	public void onTabSelected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
+		if (tab.getPosition()==0){
+			if(this.pTab==null)
+				this.pTab= new ProjectTab();
+			ft.replace(android.R.id.content, pTab);
+		}else if(tab.getPosition()==1){
+			if(this.eTab==null)
+				this.eTab=new EquipmentTab();
+			ft.replace(android.R.id.content, eTab);
+		}
+		
 	}
-	
+
+
+
+
 	@Override
-	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+	public void onTabUnselected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-	
+		
 	}
+
+
+
+
+	@Override
+	public void onTabReselected(Tab tab,
+			android.support.v4.app.FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 
 
 	

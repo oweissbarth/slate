@@ -18,8 +18,6 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;

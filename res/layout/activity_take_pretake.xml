@@ -23,7 +23,7 @@
     android:background="@color/background" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/take_running_cut"
         android:layout_width="192dp"
         android:layout_height="72dp"
         android:layout_centerHorizontal="true"

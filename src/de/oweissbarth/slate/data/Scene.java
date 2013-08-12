@@ -107,6 +107,15 @@ public class Scene{
 		return shot;
 	}
 	
+	public void deleteShot(int id){
+		this.shots.remove(id);
+		this.numberOfShots=0;
+		for(Shot shot: this.shots){
+			shot.setId((char)(this.numberOfShots + 97));
+			this.numberOfShots++;
+		}
+	}
+	
 	public void setId(int id){
 		this.id = id;
 	}

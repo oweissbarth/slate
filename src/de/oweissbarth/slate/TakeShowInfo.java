@@ -19,32 +19,25 @@
 package de.oweissbarth.slate;
 
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.actionbarsherlock.app.SherlockActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 import de.oweissbarth.slate.data.Scene;
 import de.oweissbarth.slate.data.Shot;
 import de.oweissbarth.slate.data.Take;
 import de.oweissbarth.slate.support.ProjectFile;
 
-public class TakeShowInfo extends Activity implements AnimationListener {
+public class TakeShowInfo extends Activity{
 	Scene scene;
 	Shot shot;
 	Take take;
@@ -63,15 +56,17 @@ public class TakeShowInfo extends Activity implements AnimationListener {
 		this.flipper = ((ViewFlipper)findViewById(R.id.takeviewflipper));
 	}
 	
-	protected void onStop(){
-		super.onStop();
-		ProjectFile.saveIfNecessary(this);
+	public void onBackPressed(){
+		if(this.take!=null){
+			this.shot.deleteTake(this.take.getID());
+		}
+		startActivity(new Intent(this, MainActivity.class));
 	}
 	
 	public void startTake(View view){
 		setValues();
-		int interval =2000;
-		
+		this.take.setMedia(ProjectFile.project.getEquipment().getMediaById(((Spinner)findViewById(R.id.take_pretake_media)).getSelectedItemPosition()));
+		int interval = 50;
 		flipToEnd(interval, this.flipper);
 		
 	}
@@ -119,7 +114,10 @@ public class TakeShowInfo extends Activity implements AnimationListener {
 		
 		Runnable doAfter = new Runnable(){
 			public void run(){
-				startActivity(new Intent(getApplicationContext(), TakeWaiting.class));
+				Intent i = new Intent(getApplicationContext(), TakeWaiting.class);
+				i.putExtras(getIntent().getExtras());
+				i.putExtra("take" , take.getID());
+				startActivity(i);
 			}
 		};
         int i;
@@ -130,26 +128,4 @@ public class TakeShowInfo extends Activity implements AnimationListener {
         
 
 	}
-
-	@Override
-	public void onAnimationEnd(Animation arg0) {
-		Log.d("Flipper", "Child: " +this.flipper.getDisplayedChild()+ ", Count: " + this.flipper.getChildCount());
-		if(this.flipper.getDisplayedChild()==this.flipper.getChildCount()-1){
-			this.flipper.stopFlipping();
-		}
-		
-	}
-
-	@Override
-	public void onAnimationRepeat(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onAnimationStart(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

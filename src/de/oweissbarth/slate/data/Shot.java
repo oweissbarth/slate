@@ -34,7 +34,7 @@ public class Shot{
 		
 		public Shot(int idcode){
 			this.id = (char)(idcode + 97);
-			this.numberOfTakes=0;
+			this.numberOfTakes=-1;
 		}
 
 		
@@ -104,6 +104,9 @@ public class Shot{
 		
 		}
 		
+		public Take getTakeById(int id){
+			return this.takes.get(id);
+		}
 		
 		/*****************************************************
 		 						SETTER
@@ -113,6 +116,15 @@ public class Shot{
 			Take take = new Take(this.numberOfTakes);
 			this.takes.add(take);
 			return take;
+		}
+		
+		public void deleteTake(int id){
+			this.takes.remove(id);
+			this.numberOfTakes=-1;
+			for(Take take: this.takes){
+				take.setId(this.numberOfTakes);
+				this.numberOfTakes++;
+			}
 		}
 		
 		public void setId(char id){

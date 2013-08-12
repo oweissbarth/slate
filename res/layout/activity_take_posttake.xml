@@ -16,53 +16,57 @@
       You should have received a copy of the GNU General Public License
       along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout1"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout2"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="36dp"
-        android:layout_marginLeft="36dp"
-        android:text="done" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="36dp"
-        android:text="next Take" />
-
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:text="usable" />
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button2"
-        android:layout_marginTop="26dp"
+        android:id="@+id/take_posttake_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="3"
         android:ems="10"
         android:hint="Comment"
-        android:inputType="textMultiLine" >
+        android:inputType="textMultiLine" />
 
-        <requestFocus />
-    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="12dp" >
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/take_running_cut"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="done"
+            android:text="done" />
+
+        <CheckBox
+            android:id="@+id/take_posttake_usable"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:text="usable" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="nextTake"
+            android:text="next Take" />
+
+    </LinearLayout>
+
+</LinearLayout>

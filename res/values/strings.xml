@@ -129,5 +129,6 @@
     <string name="title_activity_take_waiting">Waiting for Clapperboard</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_take_post">TakePost</string>
 
 </resources>
