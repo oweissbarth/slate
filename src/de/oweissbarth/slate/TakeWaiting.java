@@ -37,11 +37,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class TakeWaiting extends Activity{
-	private Handler handler = new Handler(){
-		public void handleMessage(Message msg){
-			onClapDetected(msg.what);
-		}
-	};
+	private Handler handler;
 	private Take take;
 	private Shot shot;
 	private Scene scene;
@@ -52,7 +48,12 @@ public class TakeWaiting extends Activity{
 		setContentView(R.layout.activity_take_waiting);
 		this.scene = ProjectFile.project.getSceneById(getIntent().getExtras().getInt("scene"));
 		this.shot = this.scene.getShotById(getIntent().getExtras().getInt("shot"));
-		this.take = this.shot.getTakeById(getIntent().getExtras().getInt("take")); 
+		this.take = this.shot.getTakeById(getIntent().getExtras().getInt("take"));
+		this.handler = new Handler(){
+			public void handleMessage(Message msg){
+				onClapDetected(msg.what);
+			}
+		};
 		
 		
 	}
@@ -76,12 +77,10 @@ public class TakeWaiting extends Activity{
 				
 				MediaRecorder recorder = new MediaRecorder();
 				Log.d("Clap", "Start waiting");
-				
-				long name = new Date().getTime();
-			    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+							    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 			    recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
 			    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-			    recorder.setOutputFile("/sdcard/"+Long.toString(name)+".3gp");
+			    recorder.setOutputFile("/sdcard/tmp.3gp");
 				try {
 					recorder.prepare();
 				} catch (IllegalStateException e) {
@@ -100,8 +99,10 @@ public class TakeWaiting extends Activity{
 					if(maxAmplitude>threshold){
 						handler.sendEmptyMessage(maxAmplitude);
 						recorder.stop();
+						recorder.reset();
+						recorder.release();
 						recorder=null;
-						File file = new File("/mnt/sdcard/", Long.toString(name)+".3gp");
+						File file = new File("/mnt/sdcard/tmp.3gp");
 						if(file.exists())
 							file.delete();
 						return;

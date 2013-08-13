@@ -85,12 +85,12 @@ public class SceneListAdapter extends BaseAdapter {
 						itemId.setText(String.valueOf(shot.getID()));
 						itemName.setText(this.context.getResources().getStringArray(R.array.fieldSize)[shot.getFieldSize()] + "|" + shot.getFocalLength());
 						itemDetails.setText(this.context.getResources().getStringArray(R.array.cameraMotion)[shot.getCameraMotion()]);
-						itemSubcategory.setText(shot.getTakes().length + "Takes");
+						itemSubcategory.setText(shot.getTakes().length + " Takes");
 						break;
 						
 			case 2:		Take take =(Take)item;
 						itemId.setText(String.valueOf(take.getID()));
-						itemName.setText(String.valueOf(take.getUsabale()));
+						itemName.setText(take.getUsabale()? "usable": "not usable");
 						itemDetails.setText(take.getComment());
 						itemSubcategory.setText(take.getDuration()+"s");
 						break;
