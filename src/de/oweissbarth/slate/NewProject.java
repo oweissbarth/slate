@@ -62,6 +62,7 @@ public class NewProject extends SherlockActivity {
 		Project project = new Project();
 		project.setName( ProjectNameField.getText().toString());
 		project.setDirector(ProjectDirectorField.getText().toString());
+		ProjectFile.project = project;
 		
 		ProjectFile.save(getApplicationContext());
 		
