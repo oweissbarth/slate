@@ -28,10 +28,6 @@ public class Camera{
 			this.id = id;
 		}
 	
-		public String toString(){
-			String string = "("+this.id+")"+ " " + this.name + "\n" + "available fps : " + Arrays.toString(this.availableFps);
-			return string;
-		}
 
 		/******************************************
 							Getter
@@ -62,6 +58,10 @@ public class Camera{
 						"\t&availableFps:" + fps + "&\n"+
 						"</Camera>\n";
 			return xml;
+		}
+		
+		public String toString(){
+			return this.id+1+"\t"+this.name;
 		}
 		/**************************************************
 		 					SETTER

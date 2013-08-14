@@ -231,6 +231,8 @@ final class Token {
 			return 703;
 		if(identifier.equals("type"))
 			return 704;
+		if(identifier.equals("storageString"))
+			return 705;
 		
 		Log.d("Token", "Couldn't find Token for " + identifier);
 		return -1;

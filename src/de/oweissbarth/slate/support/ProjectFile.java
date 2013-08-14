@@ -464,7 +464,14 @@ public class ProjectFile {
 								valid=false;reportError(state, t[i].getId());
 							}break;
 				
-				case 704:	if(t[i].getId()==15){
+				case 704:	if(t[i].getId()==705){
+								media.setStorageString(t[i].getValue());
+								state=705;
+							}else{
+								valid=false;reportError(state, t[i].getId());
+							}break;
+				
+				case 705:	if(t[i].getId()==15){
 								state=15;
 							}else{
 								valid=false;reportError(state, t[i].getId());

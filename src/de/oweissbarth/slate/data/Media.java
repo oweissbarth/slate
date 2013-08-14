@@ -17,12 +17,17 @@
  *     along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 package de.oweissbarth.slate.data;
+
+import android.app.Activity;
+import de.oweissbarth.slate.R;
+
 public class Media{
 	private String name;
 	private int id;
 	private int storage;
 	private int storageFormat; //0 = Tb, 1 = Gb, 2 = Mb, 3 = Kb, 4 = b 
 	private short type; //0 = Tape, 1 = SD-Card, 2 = Compact Flash
+	private String storageString;
 
 	public Media(int id){
 		this.id = id;
@@ -53,7 +58,7 @@ public class Media{
 	}
 	
 	public String toString(){
-		return this.name+"\t"; 
+		return this.id +"\t"+ this.name + "\t"+ this.storageString;
 	}
 	
 	public String getXML(){
@@ -62,6 +67,7 @@ public class Media{
 					"\t&medianame:"+ this.name + "&\n"+
 					"\t&storage:" + this.storage + "," + this.storageFormat+"&\n"+
 					"\t&type:" + this.type + "&\n"+
+					"\t&storageString:"+this.storageString+"&\n"+
 					"</Media>\n";
 		return xml;
 	}
@@ -88,5 +94,8 @@ public class Media{
 	
 	public void setType(short type){
 		this.type= type;
+	}
+	public void setStorageString(String string){
+		this.storageString=string;
 	}
 }

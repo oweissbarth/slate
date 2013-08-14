@@ -66,7 +66,7 @@ public class EditMedia extends SherlockActivity implements OnItemSelectedListene
 		
 		
 		if(!newObject){
-			Log.d("EDITOR", "Existing Media");
+			Log.d("Evalid=false;reportError(state, t[i].getId());DITOR", "Existing Media");
 			Log.d("Trying to access media with id ", ""+media);
 			((EditText) findViewById(R.id.mediaName)).setText(ProjectFile.project.getEquipment().getMediaById(media).getName());
 			((Spinner) findViewById(R.id.storageType)).setSelection(ProjectFile.project.getEquipment().getMediaById(media).getType());
@@ -104,11 +104,20 @@ public class EditMedia extends SherlockActivity implements OnItemSelectedListene
 		int type = ((Spinner) findViewById(R.id.storageType)).getSelectedItemPosition();
 		int storageSize= Integer.parseInt(((EditText)findViewById(R.id.storageSize)).getText().toString());
 		int format = ((Spinner) findViewById(R.id.storageFormat)).getSelectedItemPosition();
+		String[] formatStrings={};
+		
+		if(type<=4)
+			 formatStrings = getResources().getStringArray(R.array.storageFormatByte);
+		else if(type<=8)
+			formatStrings = getResources().getStringArray(R.array.storageFormatFilm);
+		else if (type<=14)
+			formatStrings = getResources().getStringArray(R.array.storageFormatTime);
 		
 		media.setName(name);
 		media.setType((short)type);
 		media.setStorage(storageSize);
 		media.setStorageFormat(format);
+		media.setStorageString(storageSize + " " + formatStrings[format]);
 		this.finish();
 		return true;
 	}
