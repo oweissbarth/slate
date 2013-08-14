@@ -34,7 +34,7 @@ public class Shot{
 		
 		public Shot(int idcode){
 			this.id = (char)(idcode + 97);
-			this.numberOfTakes=-1;
+			this.numberOfTakes=0;
 		}
 
 		
@@ -105,7 +105,7 @@ public class Shot{
 		}
 		
 		public Take getTakeById(int id){
-			return this.takes.get(id);
+			return this.takes.get(id-1);
 		}
 		
 		/*****************************************************
@@ -119,11 +119,11 @@ public class Shot{
 		}
 		
 		public void deleteTake(int id){
-			this.takes.remove(id);
-			this.numberOfTakes=-1;
+			this.takes.remove(id-1);
+			this.numberOfTakes=0;
 			for(Take take: this.takes){
-				take.setId(this.numberOfTakes);
 				this.numberOfTakes++;
+				take.setId(this.numberOfTakes);
 			}
 		}
 		

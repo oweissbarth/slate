@@ -19,6 +19,7 @@
 package de.oweissbarth.slate;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,9 @@ import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 
 import de.oweissbarth.slate.support.ProjectFile;
@@ -70,8 +74,15 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		actionBar.addTab(equipmentTab);
 		
 		Log.d("ACTIONBAR", "Added Tabs");
+		
 	}
 	
+	
+	public boolean onCreateOptionsMenu(Menu menu){
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.mainmenu, menu);
+		return true;
+	}
 	
 
 	
@@ -127,6 +138,11 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 			android.support.v4.app.FragmentTransaction ft) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public boolean help(MenuItem item){
+		startActivity(new Intent(this, Help.class));
+		return true;
 	}
 
 

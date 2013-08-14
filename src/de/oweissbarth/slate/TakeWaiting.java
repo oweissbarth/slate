@@ -73,7 +73,7 @@ public class TakeWaiting extends Activity{
 		Runnable waitForClap = new Runnable(){
 			public void run(){
 				
-				final int threshold = 20000;
+				final int threshold = 30000;
 				
 				MediaRecorder recorder = new MediaRecorder();
 				Log.d("Clap", "Start waiting");
