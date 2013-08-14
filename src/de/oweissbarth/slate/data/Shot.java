@@ -105,25 +105,25 @@ public class Shot{
 		}
 		
 		public Take getTakeById(int id){
-			return this.takes.get(id-1);
+			return this.takes.get(id);
 		}
 		
 		/*****************************************************
 		 						SETTER
 		 *****************************************************/
 		public Take addTake(){
-			this.numberOfTakes++;
 			Take take = new Take(this.numberOfTakes);
 			this.takes.add(take);
+			this.numberOfTakes++;
 			return take;
 		}
 		
 		public void deleteTake(int id){
-			this.takes.remove(id-1);
+			this.takes.remove(id);
 			this.numberOfTakes=0;
 			for(Take take: this.takes){
-				this.numberOfTakes++;
 				take.setId(this.numberOfTakes);
+				this.numberOfTakes++;
 			}
 		}
 		

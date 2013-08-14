@@ -130,7 +130,17 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 										startActivity(intent);
 										return true;
 			
-			case R.id.delete_item:		ProjectFile.project.deleteScene(listItem);
+			case R.id.delete_item:
+										switch(level){
+											case 0:		ProjectFile.project.deleteScene(listItem);
+														break;
+											
+											case 1:		ProjectFile.project.getSceneById(scene).deleteShot(listItem);
+														break;
+											
+											case 2:		ProjectFile.project.getSceneById(scene).getShotById(shot).deleteTake(listItem);
+														break;
+		}
 										listItems();
 										return true;
 										

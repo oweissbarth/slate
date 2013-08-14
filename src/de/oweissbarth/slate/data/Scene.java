@@ -101,9 +101,9 @@ public class Scene{
 	 *****************************************************/
 	
 	public Shot addShot(){
-		numberOfShots++;
 		Shot shot = new Shot(numberOfShots);
 		this.shots.add(shot);
+		numberOfShots++;
 		return shot;
 	}
 	

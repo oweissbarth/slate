@@ -31,6 +31,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -99,12 +100,24 @@
         <activity
             android:name="de.oweissbarth.slate.TakeRunning"
             android:label="@string/title_activity_running_take"
-            android:screenOrientation="landscape"  >
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="de.oweissbarth.slate.TakePost"
             android:label="@string/title_activity_take_post"
-            android:screenOrientation="landscape"  >
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.Help"
+            android:label="@string/title_activity_help" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.Settings"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

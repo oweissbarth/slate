@@ -96,9 +96,9 @@ public class Project{
 	}
 	
 	public Scene addScene(){
-		this.numberOfScenes++;
 		Scene scene = new Scene(this.numberOfScenes);
 		scenes.add(scene);
+		this.numberOfScenes++;
 		return scene;
 	}
 	

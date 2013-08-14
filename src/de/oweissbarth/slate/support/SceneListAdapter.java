@@ -74,7 +74,7 @@ public class SceneListAdapter extends BaseAdapter {
 		
 		switch(this.level){
 			case 0:		Scene scene = (Scene)item;
-						itemId.setText(String.valueOf(scene.getID()));
+						itemId.setText(String.valueOf(scene.getID()+1));
 						itemName.setText(scene.getName());
 						String extText = scene.getExt() ? "Ext" : "Int";
 						itemDetails.setText(extText);
@@ -89,7 +89,7 @@ public class SceneListAdapter extends BaseAdapter {
 						break;
 						
 			case 2:		Take take =(Take)item;
-						itemId.setText(String.valueOf(take.getID()));
+						itemId.setText(String.valueOf(take.getID()+1));
 						itemName.setText(take.getUsabale()? "usable": "not usable");
 						itemDetails.setText(take.getComment());
 						itemSubcategory.setText(take.getDuration()+"s");
