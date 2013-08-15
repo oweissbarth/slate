@@ -87,7 +87,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/three_pos_list_item_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -121,7 +121,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/three_pos_list_item_center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"

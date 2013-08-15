@@ -61,6 +61,10 @@ public class Media{
 		return this.id +"\t"+ this.name + "\t"+ this.storageString;
 	}
 	
+	public String getStorageString(){
+		return this.storageString;
+	}
+	
 	public String getXML(){
 		String xml="<Media>\n" + 
 					"\t&mediaid:"+ this.id + "&\n"+

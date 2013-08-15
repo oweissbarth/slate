@@ -30,11 +30,12 @@ import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 import de.oweissbarth.slate.support.ProjectFile;
+import de.oweissbarth.slate.support.ThreePosListAdapter;
 
 public class EquipmentTab extends SherlockListFragment implements OnClickListener {
 	
 	private byte category = -1;
-	private String[] items;
+	private Object[] items;
 	private Button footer;
 
 	public void onActivityCreated(Bundle savedInstanceState){
@@ -68,18 +69,18 @@ public class EquipmentTab extends SherlockListFragment implements OnClickListene
 	}
 
 	private void listItems(){
-		ArrayAdapter<String> a = null;
+		ThreePosListAdapter a = null;
 		
 		switch(category){
-			case -1:	this.items =  new String[]{"Cameras", "Lenses", "Media"};break;
+			case -1:	setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, new String[]{"Cameras", "Lenses", "Media"}));getListView().removeFooterView(this.footer);return;
 			
-			case 0:		this.items = ProjectFile.project.getEquipment().getCameraList();this.footer.setText("Add Camera");break;
+			case 0:		this.items = ProjectFile.project.getEquipment().getAvailableCameras();this.footer.setText("Add Camera");break;
 						
-			case 1:		this.items = ProjectFile.project.getEquipment().getLensList();this.footer.setText("Add Lens");break;
+			case 1:		this.items = ProjectFile.project.getEquipment().getAvailableLenses();this.footer.setText("Add Lens");break;
 			
-			case 2:		this.items = ProjectFile.project.getEquipment().getMediaList();this.footer.setText("Add Media");break;
+			case 2:		this.items = ProjectFile.project.getEquipment().getAvailableMedia();this.footer.setText("Add Media");break;
 		}
-		a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, this.items);
+		a = new ThreePosListAdapter(getActivity(), this.items, this.category);
 		getListView().removeFooterView(this.footer);
 		if(this.category!=-1 && getListView().getFooterViewsCount()==0){
 			this.footer.setOnClickListener(this);

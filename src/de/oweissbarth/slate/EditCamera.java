@@ -73,8 +73,11 @@ public class EditCamera extends SherlockActivity implements OnItemClickListener{
 			this.camera = i.getExtras().getInt("id");
 			((EditText)findViewById(R.id.cameraName)).setText(ProjectFile.project.getEquipment().getCameraById(this.camera).getName());
 			ListView list = (ListView)findViewById(R.id.fpsList);
-			for(int index: ProjectFile.project.getEquipment().getCameraById(this.camera).getAvailableFps())
+			for(int index: ProjectFile.project.getEquipment().getCameraById(this.camera).getAvailableFps()){
 				list.setItemChecked(index, true);
+				this.availableFpsBool[index]=true;
+				this.numberChecked++;
+			}
 		}
 	}
 	
