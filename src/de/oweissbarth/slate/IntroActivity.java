@@ -49,6 +49,7 @@ public class IntroActivity extends SherlockActivity {
 			adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new String[]{"No Projects"});
 		}
 		Spinner projects = (Spinner) findViewById(R.id.projectsSpinner);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		projects.setAdapter(adapter);
 		
 		if(this.getIntent().getExtras()!= null && this.getIntent().getExtras().getBoolean("back", false))
