@@ -80,7 +80,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	
 	public boolean onCreateOptionsMenu(Menu menu){
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.mainmenu, menu);
+		inflater.inflate(R.menu.main_menu, menu);
 		return true;
 	}
 	
@@ -89,6 +89,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	public void save(){
 		ProjectFile.save(getApplicationContext());
 	}
+
 	
 	public void onBackPressed(){
 		Log.d("Back", "Back from parent Activity");
@@ -145,7 +146,15 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		return true;
 	}
 
-
+	public boolean about(MenuItem item){
+		startActivity(new Intent(this, About.class));
+		return true;
+	}
+	
+	public boolean settings(MenuItem item){
+		startActivity(new Intent(this, Settings.class));
+		return true;
+	}
 
 
 

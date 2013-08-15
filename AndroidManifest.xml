@@ -123,6 +123,10 @@
             android:name="de.oweissbarth.slate.support.ThreePosListAdapter"
             android:label="@string/title_activity_three_pos_list_adapter" >
         </activity>
+        <activity
+            android:name="de.oweissbarth.slate.About"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

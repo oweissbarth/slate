@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/help_item" android:onClick="help" android:title="Help" android:showAsAction="collapseActionView"></item>
+    <item android:id="@+id/about_item" android:onClick="about" android:showAsAction="collapseActionView" android:title="About"></item>
+    <item android:id="@+id/settings_item" android:onClick="settings" android:title="Settings" android:showAsAction="collapseActionView"></item>
+    
+
+</menu>
