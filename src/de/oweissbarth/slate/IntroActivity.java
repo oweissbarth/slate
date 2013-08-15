@@ -87,6 +87,11 @@ public class IntroActivity extends SherlockActivity {
 	public void loadButtonEvent(View view){
 		Spinner projects = (Spinner)findViewById(R.id.projectsSpinner);
 		String projectName =  projects.getSelectedItem().toString();
+		
+		if(projectName.equals("No Projects")){
+			Toast.makeText(this, "There is no project to load", Toast.LENGTH_LONG).show();
+			return;
+		}
 		Log.d("loadFile", "Project to load is: "+ projectName);
 		
 		
