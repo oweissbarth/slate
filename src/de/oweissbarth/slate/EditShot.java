@@ -178,15 +178,22 @@ public class EditShot extends SherlockActivity implements OnSeekBarChangeListene
 		else if(adapter.getId()==R.id.shot_lens){
 			Log.d("Edit Shot", "Lens changed");
 
-			if(ProjectFile.project.getEquipment().getLensById(id).getFixed())
+			if(ProjectFile.project.getEquipment().getLensById(id).getFixed()){
 				((SeekBar)findViewById(R.id.shot_focalLength)).setVisibility(View.GONE);
-			else
+				((TextView)findViewById(R.id.shot_focalLength_minValue)).setVisibility(View.GONE);
+				((TextView)findViewById(R.id.shot_focalLength_maxValue)).setVisibility(View.GONE);
+				((TextView)findViewById(R.id.shot_focalLength_value)).setVisibility(View.GONE);
+			}
+			else{
 				((SeekBar)findViewById(R.id.shot_focalLength)).setVisibility(View.VISIBLE);
 				Lens lens = ProjectFile.project.getEquipment().getLensById(id);
 				((ProgressBar)findViewById(R.id.shot_focalLength)).setMax(lens.getMaxFocalLength()-lens.getMinFocalLength());
+				((TextView)findViewById(R.id.shot_focalLength_value)).setVisibility(View.VISIBLE);
+				((TextView)findViewById(R.id.shot_focalLength_minValue)).setVisibility(View.VISIBLE);
+				((TextView)findViewById(R.id.shot_focalLength_maxValue)).setVisibility(View.VISIBLE);
 				((TextView)findViewById(R.id.shot_focalLength_minValue)).setText(ProjectFile.project.getEquipment().getLensById(id).getMinFocalLength() + " mm");
 				((TextView)findViewById(R.id.shot_focalLength_maxValue)).setText(ProjectFile.project.getEquipment().getLensById(id).getMaxFocalLength() + " mm");
-
+			}
 		}
 		
 	}
