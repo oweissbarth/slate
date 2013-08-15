@@ -164,10 +164,13 @@ public class EditShot extends SherlockActivity implements OnSeekBarChangeListene
 			Log.d("Edit Shot", "Camera changed");
 			String[] fps = new String[ProjectFile.project.getEquipment().getCameraById(id).getAvailableFps().length];
 			int i=0;
-			for(int value: ProjectFile.project.getEquipment().getCameraById(id).getAvailableFps()){
-				fps[i]=""+value;
+			
+			for(int index: ProjectFile.project.getEquipment().getCameraById(id).getAvailableFps()){
+				fps[i]=getResources().getStringArray(R.array.fps)[index];
 				i++;
 			}
+
+			
 			ArrayAdapter fpsAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,fps);
 			fpsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			((Spinner)findViewById(R.id.shot_fps)).setAdapter(fpsAdapter);
