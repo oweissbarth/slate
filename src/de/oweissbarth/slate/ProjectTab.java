@@ -175,4 +175,16 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 		super.onResume();
 		listItems();
 	}
+	
+	public void setScene(int scene){
+		this.scene=scene;
+	}
+	
+	public void setShot(int shot){
+		this.shot=shot;
+	}
+	
+	public void setLevel(int level){
+		this.level=(byte) level;
+	}
 }

@@ -75,6 +75,18 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		
 		Log.d("ACTIONBAR", "Added Tabs");
 		
+		
+		if(getIntent().getExtras()!=null){
+			int scene = getIntent().getExtras().getInt("scene", -15);
+			int shot = getIntent().getExtras().getInt("shot", -15);
+			Log.d("Back after Take", "got Values"+scene+", "+ shot);
+			if(scene!=-15 && shot!=-15){
+				pTab.setScene(scene);
+				pTab.setShot(shot);
+				pTab.setLevel(2);
+				Log.d("BAck after Take", "set values");
+			}
+		}
 	}
 	
 	

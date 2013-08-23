@@ -18,7 +18,9 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -66,7 +68,7 @@ public class TakeShowInfo extends Activity{
 	public void startTake(View view){
 		setValues();
 		this.take.setMedia(ProjectFile.project.getEquipment().getMediaById(((Spinner)findViewById(R.id.take_pretake_media)).getSelectedItemPosition()));
-		int interval = 50;
+		int interval = 5000;
 		flipToEnd(interval, this.flipper);
 		
 	}
@@ -76,9 +78,11 @@ public class TakeShowInfo extends Activity{
 		//Set values for take_overview
 		((TextView)findViewById(R.id.take_overview_projectName)).setText(ProjectFile.project.getName());
 		((TextView)findViewById(R.id.take_overview_scene)).setText(String.valueOf(this.scene.getID()));
-		((TextView)findViewById(R.id.take_overview_shot)).setText(String.valueOf(this.shot.getID()));
-		((TextView)findViewById(R.id.take_overview_take)).setText(String.valueOf(this.take.getID()));
-		((TextView)findViewById(R.id.take_overview_date)).setText(String.valueOf(Calendar.getInstance().get(Calendar.DATE)));
+		((TextView)findViewById(R.id.take_overview_shot)).setText(String.valueOf((char)(this.shot.getID()+97)));
+		((TextView)findViewById(R.id.take_overview_take)).setText(String.valueOf(this.take.getID()+1));
+		//Date date = new Date();
+		//String dateString = date.getDay() +"-" + date.getMonth() +"-" +date.getYear();
+		((TextView)findViewById(R.id.take_overview_date)).setText(DateFormat.getDateInstance().format(new Date()));
 		((TextView)findViewById(R.id.take_overview_director)).setText(ProjectFile.project.getDirector());
 		
 
@@ -90,7 +94,7 @@ public class TakeShowInfo extends Activity{
 			
 	
 		//set values for take_shotinfo
-		((TextView)findViewById(R.id.take_shotinfo_shotid)).setText(String.valueOf(this.shot.getID()));
+		((TextView)findViewById(R.id.take_shotinfo_shotid)).setText(String.valueOf((char)(this.shot.getID()+97)));
 		((TextView)findViewById(R.id.take_shotinfo_shotfieldsize)).setText(getResources().getStringArray(R.array.fieldSize)[this.shot.getFieldSize()]);
 		((TextView)findViewById(R.id.take_shotinfo_shotcameramotion)).setText(getResources().getStringArray(R.array.cameraMotion)[this.shot.getCameraMotion()]);
 		((TextView)findViewById(R.id.take_shotinfo_shotcamera)).setText(this.shot.getCamera().toString());

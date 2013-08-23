@@ -21,7 +21,7 @@ package de.oweissbarth.slate.data;
 import java.util.LinkedList;
 
 public class Shot{
-		private char id;
+		private int id;
 		private Lens lens;
 		private int fps;
 		private int focalLength;
@@ -32,8 +32,8 @@ public class Shot{
 		private LinkedList<Take> takes = new LinkedList<Take>();
 		private int numberOfTakes;
 		
-		public Shot(int idcode){
-			this.id = (char)(idcode + 97);
+		public Shot(int id){
+			this.id =id;
 			this.numberOfTakes=0;
 		}
 
@@ -45,7 +45,7 @@ public class Shot{
 			return this.fps;
 		}
 		
-		public char getID(){
+		public int getID(){
 			return this.id;
 		}
 		
@@ -127,7 +127,7 @@ public class Shot{
 			}
 		}
 		
-		public void setId(char id){
+		public void setId(int id){
 			this.id = id;
 		}
 		

@@ -7,6 +7,7 @@ import de.oweissbarth.slate.support.ProjectFile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.CheckBox;
@@ -27,7 +28,10 @@ public class TakePost extends Activity {
 	
 	public void done(View view){
 		saveTake();
-		startActivity(new Intent(this, MainActivity.class));
+		Intent i = new Intent(this, MainActivity.class);
+		i.putExtra("scene", this.scene.getID());
+		i.putExtra("shot", this.shot.getID());
+		startActivity(i);
 		this.finish();
 	}
 	
@@ -43,7 +47,11 @@ public class TakePost extends Activity {
 		if(this.take!=null){
 			this.shot.deleteTake(this.take.getID());
 		}
-		startActivity(new Intent(this, MainActivity.class));
+		Intent i = new Intent(this, MainActivity.class);
+		i.putExtra("scene", this.scene.getID());
+		i.putExtra("shot", this.shot.getID());
+		
+		startActivity(i);
 	}
 	
 	private void saveTake(){

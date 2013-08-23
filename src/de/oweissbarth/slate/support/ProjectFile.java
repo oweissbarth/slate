@@ -257,7 +257,7 @@ public class ProjectFile {
 							}break;
 				
 				case 3:		if(t[i].getId()==301){
-								shot.setId((t[i].getValue()).charAt(0));
+								shot.setId(Integer.parseInt(t[i].getValue()));
 								state=301;
 							}else{
 								valid=false;reportError(state, t[i].getId());

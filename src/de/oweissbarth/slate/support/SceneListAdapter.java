@@ -82,7 +82,7 @@ public class SceneListAdapter extends BaseAdapter {
 						break;
 			
 			case 1:		Shot shot = (Shot)item;
-						itemId.setText(String.valueOf(shot.getID()));
+						itemId.setText(String.valueOf((char)(shot.getID()+97)));
 						itemName.setText(this.context.getResources().getStringArray(R.array.fieldSize)[shot.getFieldSize()] + "|" + shot.getFocalLength());
 						itemDetails.setText(this.context.getResources().getStringArray(R.array.cameraMotion)[shot.getCameraMotion()]);
 						itemSubcategory.setText(shot.getTakes().length + " Takes");
