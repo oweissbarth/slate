@@ -79,12 +79,15 @@ public class ProjectFile {
 	
 	public static boolean save(Context context){
 		Project project = ProjectFile.project;
+		boolean overwriting = false;
 		
 		File dir = (context.getExternalFilesDir(null));
 	    File file = new File(dir, project.getName() + ".slate");
 	    if (file.exists ()) {
-	    	Log.d("File", "File already exists...\n Overwriting..");
-	    	file.delete();
+	    	Log.d("File", "File already exists...\n backing-up..");
+	    	overwriting=true;
+	    	File tmp = new File(dir, project.getName()+".slate.old");
+	    	file.renameTo(tmp);
 	    }
 	    
 	    Log.d("File", "DestionationFile is: "+ file.toString());
@@ -104,7 +107,11 @@ public class ProjectFile {
 	    out.close();
 	    }catch(Exception e){
 	    	Log.d("File", "Error while writing File");
+	    	new File(dir, project.getName()+".slate.old").renameTo(file);
 	    	return false;
+	    }
+	    if(overwriting){
+	    	new File(dir, project.getName()+".slate.old").delete();
 	    }
 	    Toast savedNotification = Toast.makeText(context, "saved File", Toast.LENGTH_SHORT);
 		savedNotification.show();

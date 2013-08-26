@@ -49,7 +49,6 @@ public class TakeShowInfo extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_take_infoswitcher);
-		//this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		this.scene = ProjectFile.project.getSceneById(getIntent().getExtras().getInt("scene"));
 		this.shot = this.scene.getShotById(getIntent().getExtras().getInt("shot"));
 		this.take = this.shot.addTake();
