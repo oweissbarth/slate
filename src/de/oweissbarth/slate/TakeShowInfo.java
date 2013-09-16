@@ -97,7 +97,7 @@ public class TakeShowInfo extends Activity{
 		((TextView)findViewById(R.id.take_shotinfo_shotfieldsize)).setText(getResources().getStringArray(R.array.fieldSize)[this.shot.getFieldSize()]);
 		((TextView)findViewById(R.id.take_shotinfo_shotcameramotion)).setText(getResources().getStringArray(R.array.cameraMotion)[this.shot.getCameraMotion()]);
 		((TextView)findViewById(R.id.take_shotinfo_shotcamera)).setText(this.shot.getCamera().toString());
-		((TextView)findViewById(R.id.take_shotinfo_shotfps)).setText(this.shot.getFps()+" fps");
+		((TextView)findViewById(R.id.take_shotinfo_shotfps)).setText(getResources().getStringArray(R.array.fps)[this.shot.getFps()]+" fps");
 		((TextView)findViewById(R.id.take_shotinfo_shotlens)).setText(this.shot.getLens().toString());
 		((TextView)findViewById(R.id.take_shotinfo_shotfocallength)).setText(this.shot.getFocalLength() + " mm");
 		
