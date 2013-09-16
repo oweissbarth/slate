@@ -50,7 +50,7 @@ public class EditCamera extends SherlockActivity implements OnItemClickListener{
 		setContentView(R.layout.activity_edit_camera);
 		ListView list = (ListView) findViewById(R.id.fpsList);
 		String[] items = getResources().getStringArray(R.array.fps);
-		this.availableFpsBool = new boolean[items.length];
+		this.availableFpsBool = new boolean[items.length];	
 		ArrayAdapter<String> adpater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, items);
 		list.setAdapter(adpater);
 		list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

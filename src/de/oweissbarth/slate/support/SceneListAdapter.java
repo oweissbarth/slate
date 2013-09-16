@@ -90,7 +90,7 @@ public class SceneListAdapter extends BaseAdapter {
 						
 			case 2:		Take take =(Take)item;
 						itemId.setText(String.valueOf(take.getID()+1));
-						itemName.setText(take.getUsabale()? "usable": "not usable");
+						itemName.setText(take.getUsable()? "usable": "not usable");
 						itemDetails.setText(take.getComment());
 						itemSubcategory.setText(take.getDuration()+"s");
 						break;

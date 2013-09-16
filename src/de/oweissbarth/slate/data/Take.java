@@ -41,7 +41,7 @@ public class Take{
 		return this.duration;
 	}
 
-	public boolean getUsabale(){
+	public boolean getUsable(){
 		return this.usable;
 	}
 

@@ -88,7 +88,7 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 	
 	@Override
 	public void onClick(View view) {
-		Class editActivity = chooseEditActivity();
+		Class editActivity = chooseEditActivity(true);
 		Intent intent = new Intent(getActivity(), editActivity);
 		intent.putExtra("newObject", true);
 		if(this.level>0)
@@ -110,7 +110,7 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 	public boolean onContextItemSelected(MenuItem item){
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		int listItem = (int) menuInfo.id;
-		Class editActivity = chooseEditActivity();
+		Class editActivity = chooseEditActivity(false);
 		
 		switch(item.getItemId()){
 			case R.id.edit_item: 		Log.d("LIST", "Item Clicked");
@@ -123,6 +123,11 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 											
 											case 1:		intent.putExtra("scene", scene);
 														intent.putExtra("shot", listItem);
+														break;
+											
+											case 2:		intent.putExtra("scene", scene);
+														intent.putExtra("shot", shot);
+														intent.putExtra("take", listItem);
 														break;
 										}
 										Log.d("LIST", "id="+listItem+", position="+ listItem);
@@ -148,11 +153,11 @@ public class ProjectTab extends SherlockListFragment implements OnClickListener{
 		return false;
 	}
 	
-	private Class chooseEditActivity(){
+	private Class chooseEditActivity(boolean add){
 		switch(this.level){
 			case 0: 	return EditScene.class;
 			case 1:		return EditShot.class;
-			case 2:		return TakeShowInfo.class;
+			case 2:		return add? TakeShowInfo.class:EditTake.class;
 			default:	return null;
 		}
 	}
