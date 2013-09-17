@@ -108,16 +108,8 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="de.oweissbarth.slate.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
             android:name="de.oweissbarth.slate.Help"
             android:label="@string/title_activity_help" >
-        </activity>
-        <activity
-            android:name="de.oweissbarth.slate.Settings"
-            android:label="@string/title_activity_settings" >
         </activity>
         <activity
             android:name="de.oweissbarth.slate.support.ThreePosListAdapter"
@@ -126,6 +118,10 @@
         <activity
             android:name="de.oweissbarth.slate.About"
             android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name="de.oweissbarth.slate.Settings"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

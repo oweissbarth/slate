@@ -17,7 +17,6 @@
  *     along with  Slate.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
 package de.oweissbarth.slate.data;
-import java.util.Arrays;
 
 public class Camera{
 		private String name;

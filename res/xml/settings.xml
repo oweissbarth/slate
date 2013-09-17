@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ListPreference
+        android:key="shots_letter_number"
+        android:title="Shot numbers"
+        android:summary="Please select your shot id style"
+        android:entries="@array/shot_id_format_string"
+        android:entryValues="@array/shot_id_format_values"/>
+    <de.oweissbarth.slate.support.ThresholdPreference
+        android:key="threshold_clap"
+        android:title="Clap Threshold"
+       	android:defaultValue="25000"  />
+</PreferenceScreen>

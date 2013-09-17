@@ -1,20 +1,15 @@
 package de.oweissbarth.slate.support;
 
-import de.oweissbarth.slate.R;
-import de.oweissbarth.slate.R.layout;
-import de.oweissbarth.slate.R.menu;
-import de.oweissbarth.slate.data.Camera;
-import de.oweissbarth.slate.data.Lens;
-import de.oweissbarth.slate.data.Media;
-import android.os.Bundle;
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import de.oweissbarth.slate.R;
+import de.oweissbarth.slate.data.Camera;
+import de.oweissbarth.slate.data.Lens;
+import de.oweissbarth.slate.data.Media;
 
 public class ThreePosListAdapter extends BaseAdapter {
 	private Object[] items;

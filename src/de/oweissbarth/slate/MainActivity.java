@@ -18,7 +18,6 @@
  ******************************************************************************/
 package de.oweissbarth.slate;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-
 
 import de.oweissbarth.slate.support.ProjectFile;
 

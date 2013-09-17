@@ -19,6 +19,7 @@
 package de.oweissbarth.slate.support;
 
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +84,7 @@ public class SceneListAdapter extends BaseAdapter {
 			
 			case 1:		Shot shot = (Shot)item;
 						itemId.setText(String.valueOf((char)(shot.getID()+97)));
+						itemId.setText(getIdChar(shot.getID()));
 						itemName.setText(this.context.getResources().getStringArray(R.array.fieldSize)[shot.getFieldSize()] + "|" + shot.getFocalLength());
 						itemDetails.setText(this.context.getResources().getStringArray(R.array.cameraMotion)[shot.getCameraMotion()]);
 						itemSubcategory.setText(shot.getTakes().length + " Takes");
@@ -98,6 +100,21 @@ public class SceneListAdapter extends BaseAdapter {
 		
 	
 		return view;
+	}
+	
+	private String getIdChar(int id){
+		int setting = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("shots_letter_number", "0"));
+		
+		switch(setting){
+		case 0:		return (id+1)+"";
+		
+		case 1:		return (char)(id+97)+"";
+		
+		case 2:		return (char)(id+65)+"";
+		
+		default: 	return "";
+		
+		}
 	}
 
 }

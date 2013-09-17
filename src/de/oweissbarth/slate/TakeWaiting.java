@@ -20,27 +20,29 @@ package de.oweissbarth.slate;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-
-import de.oweissbarth.slate.data.Scene;
-import de.oweissbarth.slate.data.Shot;
-import de.oweissbarth.slate.data.Take;
-import de.oweissbarth.slate.support.ProjectFile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+import de.oweissbarth.slate.data.Scene;
+import de.oweissbarth.slate.data.Shot;
+import de.oweissbarth.slate.data.Take;
+import de.oweissbarth.slate.support.ProjectFile;
 
 public class TakeWaiting extends Activity{
 	private Handler handler;
 	private Take take;
 	private Shot shot;
 	private Scene scene;
+	private int threshold;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,14 @@ public class TakeWaiting extends Activity{
 		this.scene = ProjectFile.project.getSceneById(getIntent().getExtras().getInt("scene"));
 		this.shot = this.scene.getShotById(getIntent().getExtras().getInt("shot"));
 		this.take = this.shot.getTakeById(getIntent().getExtras().getInt("take"));
+		this.threshold = PreferenceManager.getDefaultSharedPreferences(this).getInt("treshold_clap", 25000);
+		
 		this.handler = new Handler(){
 			public void handleMessage(Message msg){
 				onClapDetected(msg.what);
 			}
 		};
+		
 		
 		
 	}
@@ -65,15 +70,10 @@ public class TakeWaiting extends Activity{
 	
 	
 	
-	private void listenForClap(){
-	
-	
-		
+	private void listenForClap(){		
 		
 		Runnable waitForClap = new Runnable(){
 			public void run(){
-				
-				final int threshold = 30000;
 				
 				MediaRecorder recorder = new MediaRecorder();
 				Log.d("Clap", "Start waiting");
@@ -97,7 +97,7 @@ public class TakeWaiting extends Activity{
 					int maxAmplitude = recorder.getMaxAmplitude();
 						
 					if(maxAmplitude>threshold){
-						handler.sendEmptyMessage(maxAmplitude);
+						Log.d("Threshold", maxAmplitude+ "/" + threshold);
 						recorder.stop();
 						recorder.reset();
 						recorder.release();
@@ -105,6 +105,7 @@ public class TakeWaiting extends Activity{
 						File file = new File("/mnt/sdcard/tmp.3gp");
 						if(file.exists())
 							file.delete();
+						handler.sendEmptyMessage(maxAmplitude);
 						return;
 					}
 				}

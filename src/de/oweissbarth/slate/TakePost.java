@@ -1,16 +1,15 @@
 package de.oweissbarth.slate;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import de.oweissbarth.slate.data.Scene;
 import de.oweissbarth.slate.data.Shot;
 import de.oweissbarth.slate.data.Take;
 import de.oweissbarth.slate.support.ProjectFile;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.CheckBox;
 
 public class TakePost extends Activity {
 	private Take take;

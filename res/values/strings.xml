@@ -117,6 +117,16 @@
         <item>crane</item>
         <item>steadycam</item>
     </string-array>
+    <string-array name="shot_id_format_string">
+        <item>1,2,3,4,...</item>
+        <item>a,b,c,d,...</item>
+        <item>A,B,C,D,...</item>
+    </string-array>
+      <string-array name="shot_id_format_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 
     <string name="lens">Lens</string>
     <string name="milimeter">mm</string>

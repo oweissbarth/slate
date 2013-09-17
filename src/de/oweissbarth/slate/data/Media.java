@@ -18,8 +18,6 @@
  ******************************************************************************/
 package de.oweissbarth.slate.data;
 
-import android.app.Activity;
-import de.oweissbarth.slate.R;
 
 public class Media{
 	private String name;

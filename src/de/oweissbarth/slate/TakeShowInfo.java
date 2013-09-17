@@ -19,17 +19,13 @@
 package de.oweissbarth.slate;
 
 import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -67,7 +63,7 @@ public class TakeShowInfo extends Activity{
 	public void startTake(View view){
 		setValues();
 		this.take.setMedia(ProjectFile.project.getEquipment().getMediaById(((Spinner)findViewById(R.id.take_pretake_media)).getSelectedItemPosition()));
-		int interval = 5000;
+		int interval = 500;
 		flipToEnd(interval, this.flipper);
 		
 	}
