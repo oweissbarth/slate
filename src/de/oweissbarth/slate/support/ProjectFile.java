@@ -62,6 +62,9 @@ public class ProjectFile {
 		Log.d("File", "Directory: " + directory.toString());
 		if((directory).isDirectory()){
 			files = directory.list();
+			for(String file : files){
+				file = file.replaceAll("_", " ");
+			}
 			Log.d("File", "is directory? " + String.valueOf(directory.isDirectory()));
 			Log.d("File", String.valueOf(files));
 		}if(files== null){
@@ -82,7 +85,7 @@ public class ProjectFile {
 		boolean overwriting = false;
 		
 		File dir = (context.getExternalFilesDir(null));
-	    File file = new File(dir, project.getName() + ".slate");
+	    File file = new File(dir, project.getName().replaceAll(" ", "_") + ".slate");
 	    if (file.exists ()) {
 	    	Log.d("File", "File already exists...\n backing-up..");
 	    	overwriting=true;

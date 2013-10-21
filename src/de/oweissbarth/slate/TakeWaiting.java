@@ -23,14 +23,15 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.media.MediaRecorder.AudioSource;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 import de.oweissbarth.slate.data.Scene;
 import de.oweissbarth.slate.data.Shot;
@@ -44,6 +45,11 @@ public class TakeWaiting extends Activity{
 	private Scene scene;
 	private int threshold;
 	
+	private boolean isRecording;
+	private AudioRecord recorder;
+	short[] buffer;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,11 +57,13 @@ public class TakeWaiting extends Activity{
 		this.scene = ProjectFile.project.getSceneById(getIntent().getExtras().getInt("scene"));
 		this.shot = this.scene.getShotById(getIntent().getExtras().getInt("shot"));
 		this.take = this.shot.getTakeById(getIntent().getExtras().getInt("take"));
-		this.threshold = PreferenceManager.getDefaultSharedPreferences(this).getInt("treshold_clap", 25000);
+		this.threshold = PreferenceManager.getDefaultSharedPreferences(this).getInt("threshold_clap", 25000);
 		
 		this.handler = new Handler(){
 			public void handleMessage(Message msg){
-				onClapDetected(msg.what);
+				if((int)Math.sqrt(Math.abs(msg.what))>= threshold){
+					onClapDetected(msg.what);
+				}
 			}
 		};
 		
@@ -71,53 +79,35 @@ public class TakeWaiting extends Activity{
 	
 	
 	private void listenForClap(){		
+		final int AUDIO_SOURCE = AudioSource.MIC;
+		final int SAMPLE_RATE = 44100;
+		final int CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
+		final int ENCODING = AudioFormat.ENCODING_PCM_16BIT;
+		final int BUFFERSIZE = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG, ENCODING);
 		
-		Runnable waitForClap = new Runnable(){
+		buffer = new short[BUFFERSIZE];
+		
+		this.recorder = new AudioRecord(AUDIO_SOURCE, SAMPLE_RATE, CHANNEL_CONFIG,ENCODING, BUFFERSIZE);
+		
+		this.recorder.startRecording();
+		this.isRecording=true;
+		
+		Runnable listener = new Runnable(){
 			public void run(){
-				
-				MediaRecorder recorder = new MediaRecorder();
-				Log.d("Clap", "Start waiting");
-							    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-			    recorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
-			    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-			    recorder.setOutputFile("/sdcard/tmp.3gp");
-				try {
-					recorder.prepare();
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				recorder.start();
-				
-				for(;;){
+				while(isRecording){
+					int readBytes = recorder.read(buffer,0 , buffer.length);
 					
-					int maxAmplitude = recorder.getMaxAmplitude();
-						
-					if(maxAmplitude>threshold){
-						Log.d("Threshold", maxAmplitude+ "/" + threshold);
-						recorder.stop();
-						recorder.reset();
-						recorder.release();
-						recorder=null;
-						File file = new File("/mnt/sdcard/tmp.3gp");
-						if(file.exists())
-							file.delete();
-						handler.sendEmptyMessage(maxAmplitude);
-						return;
+					short max = 0; // maximum amplitude in buffer
+					
+					for(int i =0; i < readBytes; i++){
+						max = max < buffer[i]? max : buffer[i];
 					}
+					handler.sendEmptyMessage((int) max);
 				}
-				
-
 			}
-			
 		};
-		
-		Thread myThread = new Thread(waitForClap);
-		myThread.start();
-	
+		Thread listenThread = new Thread(listener);
+		listenThread.start();
 	}
 	
 	private void onClapDetected(int value){

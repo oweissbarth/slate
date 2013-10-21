@@ -1,7 +1,8 @@
 package de.oweissbarth.slate;
 
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import android.os.Bundle;
+
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
 
 
 public class Settings extends SherlockPreferenceActivity {

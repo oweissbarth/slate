@@ -63,7 +63,7 @@ public class TakeShowInfo extends Activity{
 	public void startTake(View view){
 		setValues();
 		this.take.setMedia(ProjectFile.project.getEquipment().getMediaById(((Spinner)findViewById(R.id.take_pretake_media)).getSelectedItemPosition()));
-		int interval = 500;
+		int interval = 100;
 		flipToEnd(interval, this.flipper);
 		
 	}
